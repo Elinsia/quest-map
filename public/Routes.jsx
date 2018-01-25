@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import App from './components/App';
+import App from './pages/App';
 
 class Routes extends Component {
   render() {
