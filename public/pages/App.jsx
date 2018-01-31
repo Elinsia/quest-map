@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AppContainer from '../containers/AppContainer';
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <AppContainer/>
+      <AppContainer />
     );
   }
 }
