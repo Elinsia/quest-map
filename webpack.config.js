@@ -18,7 +18,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './build'
+    contentBase: './build',
+    compress: true
   },
   devtool: 'cheap-module-source-map',
   module: {
