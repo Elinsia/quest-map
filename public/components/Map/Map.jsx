@@ -5,11 +5,21 @@ class Map extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    try {
+      const mapOptions = {
+        center: { lat: 49.0139, lng: 31.2858 },
+        zoom: 6
+      };
+      new google.maps.Map(document.getElementById('map'), mapOptions);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   render() {
     return (
-      <div>
-        Yo
-      </div>
+      <div id="map" />
     );
   }
 }
