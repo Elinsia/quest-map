@@ -11,12 +11,12 @@ export function toggleQuest(index) {
   return {
     type: TOGGLE_QUEST,
     index
-  }
+  };
 }
 
 export function setVisibilityFilter(filter) {
   return {
     type: SET_VISIBILITY_FILTER,
     filter
-  }
+  };
 }

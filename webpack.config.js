@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
-  entry: './public/index.js',
+  entry: './public/index.jsx',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'quest-map',
@@ -19,7 +19,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './build',
-    compress: true
+    historyApiFallback: true
   },
   devtool: 'cheap-module-source-map',
   module: {
