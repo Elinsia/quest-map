@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import QuestContainer from '../containers/questsContainer/QuestContainer';
+import AccordionQuestContainer from '../containers/questsContainer/AccordionQuestContainer';
 
 class Quest extends Component {
   render() {
     return (
-      <QuestContainer />
+      <AccordionQuestContainer />
     );
   }
 }

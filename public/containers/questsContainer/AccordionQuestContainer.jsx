@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import QuestList from '../../components/quests/QuestList';
+import AccordionQuestList from '../../components/quests/AccordionQuestList';
 import { DisplayFilter, setDisplayFilter, setVisibilityFilter, VisibilityFilters } from '../../actions/questsActions';
 
 const mapDispatchToProps = dispatch => ({
@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(QuestList);
+export default connect(null, mapDispatchToProps)(AccordionQuestList);
