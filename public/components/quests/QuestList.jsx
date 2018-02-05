@@ -5,21 +5,25 @@ import QuestItem from './QuestItem';
 const quests = [
   {
     id: '1',
+    city: 'Odessa',
     title: 'One',
     points: '100'
   },
   {
     id: '2',
+    city: 'Lvov',
     title: 'Two',
     points: '200'
   },
   {
     id: '3',
+    city: 'Kyiv',
     title: 'Tree',
     points: '300'
   },
   {
     id: '4',
+    city: 'Kharkiv',
     title: 'Four',
     points: '400'
   }
@@ -32,8 +36,11 @@ class QuestList extends Component {
 
   render() {
     return (
-      <ul>
+      <ul className="ada-panel">
         {quests.map(quest => <QuestItem key={quest.id} quests={quest} />)}
+        <div className="ada-panel__content">
+          text
+        </div>
       </ul>
     );
   }
