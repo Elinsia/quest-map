@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import App from './pages/App';
 import Quest from './pages/Quest';
-import Map from './components/Map/Map';
+import Map from './components/GoogleMaps/Map/index';
 
 class Routes extends Component {
   render() {
