@@ -1,7 +1,7 @@
 import {
   SET_VISIBILITY_FILTER, SET_DISPLAY_FILTER, TOGGLE_QUEST,
   VisibilityFilters, DisplayFilter
-} from '../actions/questsActions';
+} from '../constants/actionTypes';
 
 const { SHOW_ALL } = VisibilityFilters;
 const { HIDE } = DisplayFilter;

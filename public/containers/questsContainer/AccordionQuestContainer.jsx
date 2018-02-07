@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import AccordionQuestList from '../../components/quests/AccordionQuestList';
-import { DisplayFilter, setDisplayFilter, setVisibilityFilter, VisibilityFilters } from '../../actions/questsActions';
+import { DisplayFilter, VisibilityFilters } from '../../constants/actionTypes';
+import { setDisplayFilter, setVisibilityFilter } from '../../actions/questsActions';
 
 const mapDispatchToProps = dispatch => ({
   fetchQuests: () => {
