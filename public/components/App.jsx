@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from './Header/Header';
 
-const App = (props) => (
+const App = props => (
   <div>
-    <Menu />
     <div className="wrap">
       <Header />
       {props.children}
     </div>
   </div>
-)
+);
+
+App.propTypes = {
+  children: PropTypes.any.isRequired
+};
 
 export default App;
