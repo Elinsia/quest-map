@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import Routes from './Routes';
 import configureStore from './store/configureStore';
-import '../node_modules/bootstrapada/sass/index.sass';
+//import '../node_modules/bootstrapada/sass/index.sass';
 import './style/index.sass';
 
 ReactDom.render(

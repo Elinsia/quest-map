@@ -12,11 +12,25 @@ class MapCreator extends Component {
   }
 
   componentDidMount() {
-    this.map = new google.maps.Map(
+    let map = new google.maps.Map(
       this.mapContainer,
       this.mapOptions
     );
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        let pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        let infoWindow = new google.maps.InfoWindow({map: map});
+        infoWindow.setOptions({
+          position: pos,
+          content: 'You are here.'
+        });
+      });
+    }
   }
+
   render() {
     return (
       <div id="map" ref={el => this.mapContainer = el} /> // eslint-disable-line no-return-assign

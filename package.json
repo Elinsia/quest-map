@@ -47,7 +47,6 @@
     "webpack-livereload-plugin": "^1.0.0"
   },
   "dependencies": {
-    "bootstrapada": "git+ssh://git@gitlab.com/norse-practice-2018/ada-ui-lib.git",
     "connect-history-api-fallback": "^1.5.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
