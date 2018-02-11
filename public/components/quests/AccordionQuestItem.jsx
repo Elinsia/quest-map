@@ -10,7 +10,7 @@ class AccordionQuestItem extends Component {
     this.state = {
       open: false,
       classOpen: 'ada-panel__content',
-      classRotate: ''
+      classRotate: 'ada-icon--small ada-panel__icon'
     };
 
     this.openList = this.openList.bind(this);
@@ -21,13 +21,13 @@ class AccordionQuestItem extends Component {
       this.setState({
         open: false,
         classOpen: 'ada-panel__content',
-        classRotate: ''
+        classRotate: 'ada-icon--small ada-panel__icon'
       });
     } else {
       this.setState({
         open: true,
         classOpen: 'ada-panel__content open',
-        classRotate: 'ada-panel__icon--active'
+        classRotate: 'ada-icon--small ada-panel__icon ada-panel__icon--active'
       });
     }
   }
