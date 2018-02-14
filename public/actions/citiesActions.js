@@ -7,7 +7,7 @@ export function showActiveCities(request) {
   return {
     type: SHOW_ACTIVE_CITIES,
     request
-  }
+  };
 }
 
 const getActiveCities = createLogic({

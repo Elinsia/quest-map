@@ -16,7 +16,7 @@ class CitiesList extends Component {
           <CitiesItem
             key={city._id}
             city={city}
-           />
+          />
           ))}
       </div>
     );
@@ -25,8 +25,8 @@ class CitiesList extends Component {
 
 CitiesList.propTypes = {
   showActiveCities: PropTypes.func.isRequired,
-  activeCities: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+  citiesActiveList: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     quests: PropTypes.array.isRequired
   }).isRequired).isRequired

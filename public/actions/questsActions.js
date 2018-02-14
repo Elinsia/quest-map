@@ -7,14 +7,14 @@ export function showActiveQuests(request) {
   return {
     type: SHOW_ACTIVE_QUESTS,
     request
-  }
+  };
 }
 
 const getActiveQuests = createLogic({
   type: SHOW_ACTIVE_QUESTS,
   latest: true,
 
-  process({ getState, action }, dispatch, done) {
+  process({}, dispatch, done) {
     fetch('http://localhost:3000/quests')
       .then(res => res.json())
       .then((res) => {
