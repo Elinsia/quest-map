@@ -1,24 +1,37 @@
+import { createLogic } from 'redux-logic';
 import {
-  TOGGLE_QUEST, SET_VISIBILITY_FILTER, SET_DISPLAY_FILTER
+  SHOW_ACTIVE_QUESTS, SHOW_ACTIVE_QUESTS_SUCCESS, SHOW_ACTIVE_QUESTS_FAILURE
 } from '../constants/actionTypes';
 
-export function toggleQuest(index) {
+export function showActiveQuests(request) {
   return {
-    type: TOGGLE_QUEST,
-    index
-  };
+    type: SHOW_ACTIVE_QUESTS,
+    request
+  }
 }
 
-export function setVisibilityFilter(filter) {
-  return {
-    type: SET_VISIBILITY_FILTER,
-    filter
-  };
-}
+const getActiveQuests = createLogic({
+  type: SHOW_ACTIVE_QUESTS,
+  latest: true,
 
-export function setDisplayFilter(filter) {
-  return {
-    type: SET_DISPLAY_FILTER,
-    filter
-  };
-}
+  process({ getState, action }, dispatch, done) {
+    fetch('http://localhost:3000/quests')
+      .then(res => res.json())
+      .then((res) => {
+        dispatch({
+          type: SHOW_ACTIVE_QUESTS_SUCCESS,
+          payload: res
+        });
+        done();
+      })
+      .catch((res) => {
+        dispatch({
+          type: SHOW_ACTIVE_QUESTS_FAILURE,
+          payload: res
+        });
+        done();
+      });
+  }
+});
+
+export default [getActiveQuests];

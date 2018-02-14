@@ -1,8 +1,27 @@
 {
-  "odessa": [
+  "cities": [
+    {
+      "id": 1,
+      "title": "Odessa"
+    },
+    {
+      "id": 2,
+      "title": "Kiev"
+    },
+    {
+      "id": 3,
+      "title": "Lvov"
+    },
+    {
+      "id": 4,
+      "title": "Kharkiv"
+    }
+  ],
+  "quests": [
     {
       "id": 1,
       "title": "quest1",
+      "cityId": 1,
       "point": {
         "latitude": "1",
         "longitude": "1"
@@ -14,6 +33,7 @@
     {
       "id": 2,
       "title": "quest2",
+      "cityId": 1,
       "point": {
         "latitude": "2",
         "longitude": "2"
@@ -25,6 +45,7 @@
     {
       "id": 3,
       "title": "quest3",
+      "cityId": 1,
       "point": {
         "latitude": "3",
         "longitude": "3"
@@ -36,6 +57,7 @@
     {
       "id": 4,
       "title": "quest4",
+      "cityId": 1,
       "point": {
         "latitude": "4",
         "longitude": "4"
@@ -47,6 +69,7 @@
     {
       "id": 5,
       "title": "quest5",
+      "cityId": 1,
       "point": {
         "latitude": "5",
         "longitude": "5"
@@ -54,12 +77,11 @@
       "shortDescription": "qwerty",
       "fullDescription": "qwerty1234",
       "score": "300"
-    }
-  ],
-  "Lvov": [
+    },
     {
-      "id": 1,
+      "id": 6,
       "title": "quest1",
+      "cityId": 2,
       "point": {
         "latitude": "1",
         "longitude": "1"
@@ -69,8 +91,9 @@
       "score": "200"
     },
     {
-      "id": 2,
+      "id": 7,
       "title": "quest2",
+      "cityId": 2,
       "point": {
         "latitude": "2",
         "longitude": "2"
@@ -80,8 +103,9 @@
       "score": "300"
     },
     {
-      "id": 3,
+      "id": 8,
       "title": "quest3",
+      "cityId": 2,
       "point": {
         "latitude": "3",
         "longitude": "3"
@@ -91,8 +115,9 @@
       "score": "400"
     },
     {
-      "id": 4,
+      "id": 9,
       "title": "quest4",
+      "cityId": 2,
       "point": {
         "latitude": "4",
         "longitude": "4"
@@ -102,8 +127,9 @@
       "score": "200"
     },
     {
-      "id": 5,
+      "id": 10,
       "title": "quest5",
+      "cityId": 2,
       "point": {
         "latitude": "5",
         "longitude": "5"
@@ -111,12 +137,11 @@
       "shortDescription": "qwerty",
       "fullDescription": "qwerty1234",
       "score": "300"
-    }
-  ],
-  "Kiev": [
+    },
     {
-      "id": 1,
+      "id": 11,
       "title": "quest1",
+      "cityId": 3,
       "point": {
         "latitude": "1",
         "longitude": "1"
@@ -126,8 +151,9 @@
       "score": "200"
     },
     {
-      "id": 2,
+      "id": 12,
       "title": "quest2",
+      "cityId": 3,
       "point": {
         "latitude": "2",
         "longitude": "2"
@@ -137,8 +163,9 @@
       "score": "300"
     },
     {
-      "id": 3,
+      "id": 13,
       "title": "quest3",
+      "cityId": 3,
       "point": {
         "latitude": "3",
         "longitude": "3"
@@ -148,8 +175,9 @@
       "score": "400"
     },
     {
-      "id": 4,
+      "id": 14,
       "title": "quest4",
+      "cityId": 3,
       "point": {
         "latitude": "4",
         "longitude": "4"
@@ -159,8 +187,9 @@
       "score": "200"
     },
     {
-      "id": 5,
+      "id": 15,
       "title": "quest5",
+      "cityId": 3,
       "point": {
         "latitude": "5",
         "longitude": "5"
@@ -168,12 +197,11 @@
       "shortDescription": "qwerty",
       "fullDescription": "qwerty1234",
       "score": "300"
-    }
-  ],
-  "Kharkov": [
+    },
     {
-      "id": 1,
+      "id": 16,
       "title": "quest1",
+      "cityId": 4,
       "point": {
         "latitude": "1",
         "longitude": "1"
@@ -183,8 +211,9 @@
       "score": "200"
     },
     {
-      "id": 2,
+      "id": 17,
       "title": "quest2",
+      "cityId": 4,
       "point": {
         "latitude": "2",
         "longitude": "2"
@@ -194,8 +223,9 @@
       "score": "300"
     },
     {
-      "id": 3,
+      "id": 18,
       "title": "quest3",
+      "cityId": 4,
       "point": {
         "latitude": "3",
         "longitude": "3"
@@ -205,8 +235,9 @@
       "score": "400"
     },
     {
-      "id": 4,
+      "id": 19,
       "title": "quest4",
+      "cityId": 4,
       "point": {
         "latitude": "4",
         "longitude": "4"
@@ -216,8 +247,9 @@
       "score": "200"
     },
     {
-      "id": 5,
+      "id": 20,
       "title": "quest5",
+      "cityId": 4,
       "point": {
         "latitude": "5",
         "longitude": "5"

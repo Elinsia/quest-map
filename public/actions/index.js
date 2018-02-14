@@ -1,7 +1,8 @@
 import questsActions from './questsActions';
+import citiesActions from './citiesActions';
 
 const actions = [
-  ...questsActions
+  ...citiesActions, ...questsActions
 ];
 
 export default actions;

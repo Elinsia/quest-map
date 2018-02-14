@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class App extends Component {
-  render() {
-    return (
-      <h1>Hello!!!</h1>
-    );
-  }
-}
+const App = props => (
+  <div>
+    <div className="wrap">
+      {props.children}
+    </div>
+  </div>
+);
 
 export default App;
+
+App.propTypes = {
+  children: PropTypes.node.isRequired
+};
