@@ -4,11 +4,13 @@ import Marker from 'Marker';
 class Markers extends Component {
   constructor(props) {
     super(props);
+
   }
+
   render() {
     return (
       {
-        this.props.markers.map((marker, id) => (
+        this.state.markers.map((marker, id) => (
           <Marker
             key={id}
             point={marker.point}
