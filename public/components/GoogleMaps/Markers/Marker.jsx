@@ -6,8 +6,11 @@ class Marker extends Component {
     super(props);
 
     this.marker = new google.maps.Marker({
-      position: this.props.point,
-      title: this.props.title,
+      position: {
+        lat: this.props.point.latitude,
+        lng: this.props.point.longitude
+      },
+      label: "!",
       map: this.props.map,
       draggable: false
     });
@@ -24,7 +27,6 @@ class Marker extends Component {
 
 Marker.propTypes = {
   point: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
   map: PropTypes.object.isRequired
 };
 

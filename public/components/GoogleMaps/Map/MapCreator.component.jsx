@@ -16,16 +16,21 @@ class MapCreator extends Component {
       this.mapContainer,
       this.mapOptions
     );
+    this.props.initMap(map);
+
+    google.maps.event.addListener(map, 'click', function( event ){
+      console.log( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
+   });
+
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         let pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
-        };
-        let infoWindow = new google.maps.InfoWindow({map: map});
-        infoWindow.setOptions({
-          position: pos,
-          content: 'You are here.'
+        }; 
+        let marker = new google.maps.Marker({map: map});
+        marker.setOptions({
+          position: pos
         });
       });
     }
