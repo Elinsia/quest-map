@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import MarkerClusterer from 'node-js-marker-clusterer';
-import { createMarkers } from '../services/createMarkers';
+import createMarkers from '../services/createMarkers';
 
 class Marker extends Component {
   constructor(props) {
