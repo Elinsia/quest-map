@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { openMenu, closeMenu } from '../../actions/menuActions';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CrossIcon from '../Icons/CrossIcon';
@@ -47,11 +45,3 @@ Menu.propTypes = {
   hideMenu: PropTypes.func.isRequired
 };
 export default Menu;
-
-// export default connect((state) => ({
-//   menuClose: state.menu
-// }), (dispatch) => ({
-//   closeMenu: () => {
-//     dispatch(closeMenu());
-//   }
-// }))(Menu);

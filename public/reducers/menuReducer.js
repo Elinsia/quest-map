@@ -1,5 +1,5 @@
-import { OPEN_MENU, CLOSE_MENU } from '../constants/actionTypes';
 import { LOCATION_CHANGE } from 'react-router-redux';
+import { OPEN_MENU, CLOSE_MENU } from '../constants/actionTypes';
 
 const initialState = false;
 
