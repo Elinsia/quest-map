@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import OpenIcon from '../Icons/OpenIcon';
-import QuestList from './QuestList';
+import QuestList from './QuestList.component';
 
-class AccordionQuestItem extends Component {
+class CitiesItem extends Component {
   constructor() {
     super();
 
@@ -43,7 +43,7 @@ class AccordionQuestItem extends Component {
       >
         <div className="ada-panel__header">
           <div className="ada-panel__text">
-            {this.props.quests.city}
+            {this.props.city.title}
           </div>
           <OpenIcon iconClass={this.state.classRotate} />
         </div>
@@ -53,8 +53,8 @@ class AccordionQuestItem extends Component {
   }
 }
 
-AccordionQuestItem.propTypes = {
-  quests: PropTypes.object.isRequired
+CitiesItem.propTypes = {
+  city: PropTypes.object.isRequired
 };
 
-export default AccordionQuestItem;
+export default CitiesItem;

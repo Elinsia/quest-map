@@ -1,14 +1,14 @@
 {
   "name": "quest-map",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "precommit": "npm run lint",
     "lint": "eslint --ext .jsx,.js public/",
     "build": "webpack",
     "start": "webpack-dev-server --open --watch",
-    "server": "nodemon server.js"
+    "server": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -39,7 +39,6 @@
     "json-server": "^0.12.1",
     "node-sass": "^4.7.2",
     "nodemon": "^1.14.12",
-    "redux-devtools": "^3.4.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
@@ -47,14 +46,24 @@
     "webpack-livereload-plugin": "^1.0.0"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "~1.18.2",
     "bootstrapada": "git+ssh://git@gitlab.com/norse-practice-2018/ada-ui-lib.git",
     "connect-history-api-fallback": "^1.5.0",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.4",
+    "morgan": "~1.9.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logic": "^0.12.3"
   }
 }

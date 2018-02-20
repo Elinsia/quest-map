@@ -1,32 +1,32 @@
 import { createLogic } from 'redux-logic';
 import {
-  SHOW_ACTIVE_QUESTS, SHOW_ACTIVE_QUESTS_SUCCESS, SHOW_ACTIVE_QUESTS_FAILURE
+  SHOW_ACTIVE_CITIES, SHOW_ACTIVE_CITIES_SUCCESS, SHOW_ACTIVE_CITIES_FAILURE
 } from '../constants/actionTypes';
 
-export function showActiveQuests(request) {
+export function showActiveCities(request) {
   return {
-    type: SHOW_ACTIVE_QUESTS,
+    type: SHOW_ACTIVE_CITIES,
     request
   };
 }
 
-const getActiveQuests = createLogic({
-  type: SHOW_ACTIVE_QUESTS,
+const getActiveCities = createLogic({
+  type: SHOW_ACTIVE_CITIES,
   latest: true,
 
   process(_, dispatch, done) {
-    fetch('http://localhost:3000/quests')
+    fetch('http://localhost:3000/cities')
       .then(res => res.json())
       .then((res) => {
         dispatch({
-          type: SHOW_ACTIVE_QUESTS_SUCCESS,
+          type: SHOW_ACTIVE_CITIES_SUCCESS,
           payload: res
         });
         done();
       })
       .catch((res) => {
         dispatch({
-          type: SHOW_ACTIVE_QUESTS_FAILURE,
+          type: SHOW_ACTIVE_CITIES_FAILURE,
           payload: res
         });
         done();
@@ -34,4 +34,4 @@ const getActiveQuests = createLogic({
   }
 });
 
-export default [getActiveQuests];
+export default [getActiveCities];
