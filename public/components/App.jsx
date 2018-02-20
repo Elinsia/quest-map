@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header/Header';
+import Header from './Header/Header.container';
+import Menu from './Menu/Menu.container';
+// import Wrap from './Wrap/Wrap.component';
+import Wrap from './Wrap/Wrap.container';
 
 const App = props => (
   <div>
-    <div className="wrap">
+    <Menu />
+    <Wrap>
       <Header />
       {props.children}
-    </div>
+    </Wrap>
   </div>
 );
 
+
 App.propTypes = {
-  children: PropTypes.any.isRequired
+  children: PropTypes.node.isRequired
 };
 
 export default App;

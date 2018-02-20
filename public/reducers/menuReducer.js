@@ -1,0 +1,15 @@
+import { OPEN_MENU, CLOSE_MENU } from '../constants/actionTypes';
+
+const initialState = false;
+
+export default function menu(state = initialState, action) {
+  switch (action.type) {
+    case OPEN_MENU:
+      return true;
+    case CLOSE_MENU:
+    case '@@router/LOCATION_CHANGE':
+      return false;
+    default:
+      return state;
+  }
+}
