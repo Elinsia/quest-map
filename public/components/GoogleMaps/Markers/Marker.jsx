@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
+import MarkerClusterer from 'node-js-marker-clusterer';
+import { createMarkers } from '../services/createMarkers';
 
 class Marker extends Component {
   constructor(props) {
     super(props);
 
-    this.marker = new google.maps.Marker({
-      position: {
-        lat: this.props.point.latitude,
-        lng: this.props.point.longitude
-      },
-      label: "!",
-      map: this.props.map,
-      draggable: false
-    });
+    this.handlerCreateCluster = this.handlerCreateCluster.bind(this);
   }
 
-  conponentWillUnmount() {
-    this.marker.setMap(null);
+  componentDidUpdate() {
+    this.handlerCreateCluster();
+  }
+
+  handlerCreateCluster() {
+    const markers = createMarkers(this.props.quests, this.props.map);
+    new MarkerClusterer(this.props.map, markers, { // eslint-disable-line  no-new
+      imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+    });
   }
 
   render() {
@@ -26,8 +27,8 @@ class Marker extends Component {
 }
 
 Marker.propTypes = {
-  point: PropTypes.object.isRequired,
-  map: PropTypes.object.isRequired
+  quests: PropTypes.array,
+  map: PropTypes.object
 };
 
 export default Marker;

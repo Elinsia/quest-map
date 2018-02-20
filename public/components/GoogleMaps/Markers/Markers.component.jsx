@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
-//import MarkerClusterer from 'node-js-marker-clusterer';
+import PropTypes from 'prop-types';
 import Marker from './Marker';
 
 class Markers extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   componentWillMount() {
     this.props.showActiveQuests();
   }
 
   render() {
-    //let markerCluster = new MarkerClusterer(this.props.map, markers);
     return (
-      <div>
-        {
-          this.props.quests.map((quest, id) => (
-            <Marker
-              key={id}
-              point={quest.point}
-              map={this.props.map}
-            />
-          ))
-        }
-      </div>
+      <Marker
+        quests={this.props.quests}
+        map={this.props.map}
+      />
     );
   }
 }
+
+Markers.propTypes = {
+  showActiveQuests: PropTypes.func.isRequired,
+  map: PropTypes.object,
+  quests: PropTypes.array
+};
 
 export default Markers;

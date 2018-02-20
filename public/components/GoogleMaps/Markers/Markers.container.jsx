@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import Markers from './Markers.component';
-import { initMap } from '../../../actions/mapActions';
 import { showActiveQuests } from '../../../actions/questsActions';
 
 const mapStateToProps = state => ({

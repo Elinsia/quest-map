@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class MapCreator extends Component {
   constructor(props) {
@@ -12,23 +13,24 @@ class MapCreator extends Component {
   }
 
   componentDidMount() {
-    let map = new google.maps.Map(
+    const map = new google.maps.Map(
       this.mapContainer,
       this.mapOptions
     );
     this.props.initMap(map);
 
-    google.maps.event.addListener(map, 'click', function( event ){
-      console.log( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() );
-   });
+    // for dev, remove later
+    google.maps.event.addListener(map, 'click', (event) => {
+      console.log(`Latitude: ${event.latLng.lat()} longitude: ${event.latLng.lng()}`);
+    });
 
-    if(navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        let pos = {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
-        }; 
-        let marker = new google.maps.Marker({map: map});
+        };
+        const marker = new google.maps.Marker({ map });
         marker.setOptions({
           position: pos
         });
@@ -42,5 +44,9 @@ class MapCreator extends Component {
     );
   }
 }
+
+MapCreator.propTypes = {
+  initMap: PropTypes.func.isRequired
+};
 
 export default MapCreator;
