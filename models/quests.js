@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const City = require('./cities');
+
 const questSchema = new Schema({
   title: { type: String, require: true },
   point: {
@@ -14,6 +16,13 @@ const questSchema = new Schema({
   complete: { type: Boolean},
   city: { type: Schema.Types.ObjectId, ref: 'City' },
   users: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+});
+
+questSchema.post('remove', function (quest) {
+  City.findbyId(quest.city, function (err, city) {
+    city.quests.pull(quest);
+    city.save();
+  })
 });
 
 module.exports = mongoose.model('Quest', questSchema);

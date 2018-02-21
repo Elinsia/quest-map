@@ -15,8 +15,7 @@ router.get('/', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Success',
-        obj: users
+        data: users
       });
     });
 });
@@ -31,8 +30,7 @@ router.get('/:id', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Success',
-        obj: user
+        data: user
       });
     });
 });
@@ -51,8 +49,7 @@ router.post('/signup', function(req, res, next) {
       });
     }
     res.status(201).json({
-      message: 'User created',
-      obj: result
+      data: result
     });
   });
 });
@@ -73,7 +70,6 @@ router.post('/signin', function(req, res, next) {
     }
     let token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
     res.status(200).json({
-      message: 'Successfully logged in',
       token: token,
       userId: user._id
     });
@@ -106,8 +102,7 @@ router.patch('/:id', function(req, res, next) {
           });
         }
         res.status(200).json({
-          message: 'Updated message',
-          obj: result
+          data: result
         });
       });
     });
@@ -130,8 +125,7 @@ router.delete('/:id', function(req, res, next) {
       }
       else {
         res.status(200).json({
-          message: 'Deleted user',
-          obj: user
+          data: user
         });
       }
     });
