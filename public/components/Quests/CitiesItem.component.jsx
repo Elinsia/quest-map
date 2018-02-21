@@ -1,60 +1,52 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import OpenIcon from '../Icons/OpenIcon';
-import QuestList from './QuestList.component';
+import QuestsList from './QuestsList.container';
 
 class CitiesItem extends Component {
   constructor() {
     super();
 
     this.state = {
-      open: false,
-      classOpen: 'ada-panel__content',
-      classRotate: 'ada-icon--small ada-panel__icon'
+      isOpen: false
     };
 
-    this.openList = this.openList.bind(this);
+    this.toggleActiveCities = this.toggleActiveCities.bind(this);
   }
 
-  openList() {
-    if (this.state.open) {
-      this.setState({
-        open: false,
-        classOpen: 'ada-panel__content',
-        classRotate: 'ada-icon--small ada-panel__icon'
-      });
-    } else {
-      this.setState({
-        open: true,
-        classOpen: 'ada-panel__content open',
-        classRotate: 'ada-icon--small ada-panel__icon ada-panel__icon--active'
-      });
-    }
+  toggleActiveCities() {
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
   }
 
   render() {
     return (
-      <div
-        className="ada-panel__item"
-        onClick={this.openList}
-        onKeyPress={this.openList}
-        role="button"
-        tabIndex="0"
-      >
-        <div className="ada-panel__header">
+      <div className="ada-panel__item">
+        <div
+          className="ada-panel__header"
+          onClick={this.toggleActiveCities}
+          onKeyPress={this.toggleActiveCities}
+          role="button"
+          tabIndex="0"
+        >
           <div className="ada-panel__text">
-            {this.props.city.title}
+            {this.props.activeCity.title}
           </div>
-          <OpenIcon iconClass={this.state.classRotate} />
+          <OpenIcon iconClass={
+            `ada-icon--small ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`
+          }
+          />
         </div>
-        <QuestList className={this.state.classOpen} />
+        <QuestsList cityId={this.props.id} className={`ada-panel__content ${this.state.isOpen ? 'open' : ''}`} />
       </div>
     );
   }
 }
 
 CitiesItem.propTypes = {
-  city: PropTypes.object.isRequired
+  activeCity: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default CitiesItem;
