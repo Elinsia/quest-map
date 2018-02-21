@@ -13,7 +13,7 @@ function activeQuests(state = {}, action) {
           citiesQuests[key] = [action.payload.data[i]];
         }
       }
-      return Object.assign({}, state, citiesQuests);
+      return { ...state, ...citiesQuests };
     }
     default:
       return state;
