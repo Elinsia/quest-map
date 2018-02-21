@@ -3,10 +3,10 @@ import { SHOW_ACTIVE_QUESTS_SUCCESS } from '../constants/actionTypes';
 
 function activeQuests(state = {}, action) {
   switch (action.type) {
-    case SHOW_ACTIVE_QUESTS_SUCCESS:
-      let citiesQuests = {};
-      for (let i = 0; i < action.payload.data.length; i++) {
-        let key = action.payload.data[i].city;
+    case SHOW_ACTIVE_QUESTS_SUCCESS: {
+      const citiesQuests = {};
+      for (let i = 0; i < action.payload.data.length; i += 1) {
+        const key = action.payload.data[i].city;
         if (citiesQuests[key]) {
           citiesQuests[key].push(action.payload.data[i]);
         } else {
@@ -14,6 +14,7 @@ function activeQuests(state = {}, action) {
         }
       }
       return Object.assign({}, state, citiesQuests);
+    }
     default:
       return state;
   }

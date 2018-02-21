@@ -16,7 +16,7 @@ class CitiesList extends Component {
 
     return (
       <div className="ada-panel">
-        {activeCities.map((city) => (
+        {activeCities.map(city => (
           <CitiesItem
             key={city._id}
             activeCity={city}

@@ -33,7 +33,10 @@ class CitiesItem extends Component {
           <div className="ada-panel__text">
             {this.props.activeCity.title}
           </div>
-          <OpenIcon iconClass={`ada-icon--small ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`} />
+          <OpenIcon iconClass={
+            `ada-icon--small ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`
+          }
+          />
         </div>
         <QuestsList cityId={this.props.id} className={`ada-panel__content ${this.state.isOpen ? 'open' : ''}`} />
       </div>
@@ -42,7 +45,8 @@ class CitiesItem extends Component {
 }
 
 CitiesItem.propTypes = {
-  activeCity: PropTypes.object.isRequired
+  activeCity: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default CitiesItem;

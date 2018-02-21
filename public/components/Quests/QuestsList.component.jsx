@@ -16,7 +16,7 @@ class QuestsList extends Component {
 
     return (
       <div className={this.props.className}>
-        {activeQuests.map((quest) => (
+        {activeQuests.map(quest => (
           <QuestsItem
             key={quest._id}
             activeQuest={quest}
