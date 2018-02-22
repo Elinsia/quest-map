@@ -18,7 +18,7 @@ class Menu extends Component {
           </span>
         </div>
         <ul className="ada-menu__container">
-          <li className="ada-menu__item">
+          <li className="ada-menu__item" onClick='location.href="/profile"'>
             <Link className="ada-menu__text" to="/profile">Profile</Link>
           </li>
           <li className="ada-menu__item">
