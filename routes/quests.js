@@ -17,8 +17,7 @@ router.get('/', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Success',
-        obj: quests
+        data: quests
       });
     });
 });
@@ -34,8 +33,7 @@ router.get('/:id', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Success',
-        obj: quest
+        data: quest
       });
     });
 });
@@ -68,8 +66,7 @@ router.post('/', function(req, res, next) {
       city.quests.push(result);
       city.save();
       res.status(201).json({
-        message: 'Quest created',
-        obj: result
+        data: result
       });
     });
   });
@@ -99,10 +96,8 @@ router.patch('/:id', function(req, res, next) {
       }
       quest.active = req.body.active;
       if (quest.active === true){
-        console.log('active true');
         quest.users = user;
-        if (quest.complete === true){
-          console.log('complete true');
+        if (quest.complete === true) {
           quest.complete = req.body.complete;
           quest.save(function(err, result) {
             if (err) {
@@ -115,13 +110,11 @@ router.patch('/:id', function(req, res, next) {
             user.questsComplete.push(result);
             user.save();
             res.status(200).json({
-              message: 'Updated quest',
-              obj: result
+              data: result
             });
           });
         }
         else {
-          console.log('complete false');
           quest.save(function(err, result) {
             if (err) {
               return res.status(500).json({
@@ -133,14 +126,12 @@ router.patch('/:id', function(req, res, next) {
             user.questsComplete = user.questsComplete.filter(item => item.toString() !== quest._id.toString());
             user.save();
             res.status(200).json({
-              message: 'Updated quest',
-              obj: result
+              data: result
             });
           });
         }
       }
       else {
-        console.log('active false');
         quest.users = quest.users.filter(item => item.toString() !== user._id.toString());
         quest.save(function(err, result) {
           if (err) {
@@ -152,8 +143,7 @@ router.patch('/:id', function(req, res, next) {
           user.questsActive = user.questsActive.filter(item => item.toString() !== quest._id.toString());
           user.save();
           res.status(200).json({
-            message: 'Updated quest',
-            obj: result
+            data: result
           });
         });
       }
@@ -188,8 +178,7 @@ router.patch('/admin/:id', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Updated quest',
-        obj: result
+        data: result
       });
     });
   });
@@ -212,13 +201,12 @@ router.delete('/:id', function(req, res, next) {
     quest.remove(function(err, result) {
       if (err) {
         return res.status(500).json({
-          title: 'An error occurred',
+          title: 'Remove error',
           error: err
         });
       }
       res.status(200).json({
-        message: 'Deleted quest',
-        obj: result
+        data: result
       });
     });
   });
