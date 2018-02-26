@@ -21,5 +21,8 @@ export default class OpenIcon extends Component {
 }
 
 OpenIcon.propTypes = {
-  iconClass: PropTypes.string.isRequired
+  iconClass: PropTypes.string
+};
+OpenIcon.defaultProps = {
+  iconClass: ''
 };

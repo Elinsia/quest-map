@@ -21,5 +21,8 @@ export default class BurgerIcon extends Component {
 }
 
 BurgerIcon.propTypes = {
-  iconClass: PropTypes.string.isRequired
+  iconClass: PropTypes.string
+};
+BurgerIcon.defaultProps = {
+  iconClass: ''
 };
