@@ -9,11 +9,12 @@ const App = props => (
     <Menu />
     <Wrap>
       <Header />
-      {props.children}
+      <div className="ada-container">
+        {props.children}
+      </div>
     </Wrap>
   </div>
 );
-
 
 App.propTypes = {
   children: PropTypes.node.isRequired
