@@ -55,11 +55,7 @@
     "cors": "^2.8.4",
     "debug": "~2.6.9",
     "express": "~4.15.5",
-<<<<<<< HEAD
-=======
     "history": "^4.7.2",
-	"js-marker-clusterer": "^1.0.0",
->>>>>>> e491d344393e8aaea8c733a92a0f9bf01844b6c2
     "jsonwebtoken": "^8.1.1",
     "mongoose": "^5.0.4",
     "morgan": "~1.9.0",
