@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SHOW_ACTIVE_QUESTS_SUCCESS } from '../constants/actionTypes';
+import { GET_CURRENT_QUEST_SUCCESS, SHOW_ACTIVE_QUESTS_SUCCESS } from '../constants/actionTypes';
 
 function activeQuests(state = {}, action) {
   switch (action.type) {
@@ -20,8 +20,18 @@ function activeQuests(state = {}, action) {
   }
 }
 
+function currentQuest(state = {}, action) {
+  switch (action.type) {
+    case GET_CURRENT_QUEST_SUCCESS: {
+      return action.payload.data;
+    }
+    default:
+      return state;
+  }
+}
+
 const questReducer = combineReducers({
-  activeQuests
+  activeQuests, currentQuest
 });
 
 export default questReducer;
