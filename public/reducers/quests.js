@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
 import { SHOW_ACTIVE_QUESTS_SUCCESS } from '../constants/actionTypes';
 
+const initialState = {
+  quests: []
+};
+
 function activeQuests(state = {}, action) {
   switch (action.type) {
     case SHOW_ACTIVE_QUESTS_SUCCESS: {
@@ -20,8 +24,20 @@ function activeQuests(state = {}, action) {
   }
 }
 
+function showAllQuests(state = initialState, action) {
+  switch (action.type) {
+    case SHOW_ACTIVE_QUESTS_SUCCESS: {
+      return Object.assign({}, state, {
+        quests: action.payload.data
+      });
+    }
+    default:
+      return state;
+  }
+}
+
 const questReducer = combineReducers({
-  activeQuests
+  activeQuests, showAllQuests
 });
 
 export default questReducer;

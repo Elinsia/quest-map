@@ -4,7 +4,7 @@ import { showActiveQuests } from '../../../actions/questsActions';
 
 const mapStateToProps = state => ({
   map: state.map.initMap.map,
-  quests: state.quests.showActiveQuests
+  quests: state.quests.showAllQuests.quests
 });
 
 const mapDispatchToProps = dispatch => ({
