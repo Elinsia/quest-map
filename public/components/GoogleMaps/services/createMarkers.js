@@ -1,6 +1,8 @@
 const createMarkers = (quests, map) => {
   const markers = [];
-
+  const infoWindow = new google.maps.InfoWindow({
+    content: 'You clicked on marker'
+  });
   quests.map((quest) => { // eslint-disable-line array-callback-return
     const marker = new google.maps.Marker({
       position: {
@@ -11,6 +13,11 @@ const createMarkers = (quests, map) => {
       map,
       draggable: false
     });
+
+    marker.addListener('click', () => {
+      infoWindow.open(map, marker);
+    });
+
     markers.push(marker);
   });
 

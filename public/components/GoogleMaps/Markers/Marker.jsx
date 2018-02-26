@@ -7,6 +7,8 @@ class Marker extends Component {
   constructor(props) {
     super(props);
 
+    this.markers = null;
+
     this.handlerCreateCluster = this.handlerCreateCluster.bind(this);
   }
 
@@ -16,7 +18,7 @@ class Marker extends Component {
 
   handlerCreateCluster() {
     const markers = createMarkers(this.props.quests, this.props.map);
-    new MarkerClusterer(this.props.map, markers, { // eslint-disable-line  no-new
+    this.markers = new MarkerClusterer(this.props.map, markers, { // eslint-disable-line  no-new
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
   }
