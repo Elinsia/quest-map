@@ -23,5 +23,8 @@ export default class CrossIcon extends Component {
 }
 
 CrossIcon.propTypes = {
-  iconClass: PropTypes.string.isRequired
+  iconClass: PropTypes.string
+};
+CrossIcon.defaultProps = {
+  iconClass: ''
 };
