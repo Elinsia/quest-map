@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import ActiveQuest from './pages/ActiveQuest';
-import Map from './components/Map/Map';
+import Map from './components/GoogleMaps/Map/index';
 
 class Routes extends Component {
   render() {

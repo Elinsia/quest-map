@@ -14,7 +14,7 @@ class ContentQuest extends Component {
 
   render() {
     const currentQuest = this.props.currentQuest;
-    console.log(currentQuest);
+
     return (
       <div className="quest__content">
         <h1>{currentQuest.title}</h1>

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import MapCreator from './MapCreator.container';
+import Markers from '../Markers/Markers.container';
 
 class Map extends Component {
   render() {
     return (
       <div>
-        Yo
+        <MapCreator />
+        <Markers />
       </div>
     );
   }
