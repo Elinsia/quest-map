@@ -5,6 +5,7 @@ const City = require('../models/cities');
 
 router.get('/', function(req, res, next) {
   City.find()
+    .populate('quests', 'title')
     .exec(function(err, cities) {
       if (err) {
         return res.status(500).json({
@@ -13,14 +14,14 @@ router.get('/', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Success',
-        obj: cities
+        data: cities
       });
     });
 });
 
 router.get('/:id', function(req, res, next) {
   City.findById(req.params.id)
+    .populate('quests', 'title')
     .exec(function (err, city) {
       if (err) {
         return res.status(500).json({
@@ -29,8 +30,7 @@ router.get('/:id', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Success',
-        obj: city
+        data: city
       });
     });
 });
@@ -47,8 +47,7 @@ router.post('/', function(req, res, next) {
       });
     }
     res.status(201).json({
-      message: 'City created',
-      obj: result
+      data: result
     });
   });
 });
@@ -76,8 +75,7 @@ router.patch('/:id', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Updated message',
-        obj: result
+        data: result
       });
     });
   });
@@ -105,8 +103,7 @@ router.delete('/:id', function(req, res, next) {
         });
       }
       res.status(200).json({
-        message: 'Deleted city',
-        obj: result
+        data: result
       });
     });
   });

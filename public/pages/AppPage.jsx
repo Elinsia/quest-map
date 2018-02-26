@@ -12,8 +12,8 @@ class AppPage extends Component {
   }
 }
 
-export default AppPage;
-
 AppPage.propTypes = {
   children: PropTypes.node.isRequired
 };
+
+export default AppPage;
