@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Wrap extends Component {
   render() {
     return (
-      <div className={`ada-wrap ${this.props.openMenu ? 'layer modal-open content' : ''}`}>
+      <div className={`ada-wrap ${this.props.openMenu ? 'modal-open content' : ''}`}>
         {
           this.props.children
         }
