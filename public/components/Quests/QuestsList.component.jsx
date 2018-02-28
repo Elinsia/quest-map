@@ -30,18 +30,11 @@ class QuestsList extends Component {
 QuestsList.propTypes = {
   className: PropTypes.string.isRequired,
   showActiveQuests: PropTypes.func.isRequired,
-  questsActiveList: PropTypes.arrayOf(PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    point: PropTypes.object.isRequired,
-    shortDescription: PropTypes.string.isRequired,
-    fullDescription: PropTypes.string.isRequired,
-    score: PropTypes.number.isRequired,
-    active: PropTypes.bool.isRequired,
-    complete: PropTypes.bool.isRequired,
-    city: PropTypes.string.isRequired,
-    users: PropTypes.array.isRequired
-  }).isRequired).isRequired
+  questsActiveList: PropTypes.array
+};
+
+QuestsList.defaultProps = {
+  questsActiveList: []
 };
 
 export default QuestsList;

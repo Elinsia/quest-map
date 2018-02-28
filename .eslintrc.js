@@ -25,10 +25,11 @@ module.exports = {
     }],
     'max-len': ['error', 120, 4],
     'react/no-array-index-key': 'warn',
-    'no-underscore-dangle': 'warn',
+    'no-underscore-dangle': ["error", { "allow": ["_id"] }],
     'react/forbid-prop-types': 'off',
     'react/prefer-stateless-function': 'off',
-    'react/require-default-props': 'warn'
+    'react/require-default-props': 'warn',
+    'prefer-destructuring': ["error", {"object": false, "array": false}]
   },
   globals: {
     APP_CONFIG: false,

@@ -8,9 +8,8 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => null} />
+        <Route exact path="/map" component={Map} />
         <Route path="/quests" component={ActiveQuest} />
-        <Route path="/map" component={Map} />
       </Switch>
     );
   }
