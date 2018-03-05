@@ -33,10 +33,7 @@ class CitiesItem extends Component {
           <div className="ada-panel__text">
             {this.props.activeCity.title}
           </div>
-          <OpenIcon iconClass={
-            `ada-icon--small ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`
-          }
-          />
+          <OpenIcon iconClass={`ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`} />
         </div>
         <QuestsList cityId={this.props.id} className={`ada-panel__content ${this.state.isOpen ? 'open' : ''}`} />
       </div>

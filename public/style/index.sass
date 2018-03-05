@@ -9,11 +9,14 @@
   display: block
 
 .quest
-  &__title a
-    display: block
-    margin: 9px 0 9px 0
-    text-decoration: none
-    color: black
+  &__title
+    display: flex
+    flex-grow: 7
+    a
+      display: block
+      margin: 9px 0 9px 0
+      text-decoration: none
+      color: black
   &__score
     margin: 9px 0 9px 0
   &__content
@@ -21,3 +24,26 @@
     padding: 20px 100px
   &__desc
     margin-top: 20px
+
+.accept-icon
+  svg
+    fill: #4caf50
+
+.reject-icon
+  svg
+    path:nth-child(1)
+      fill: #D71C23
+
+.quest-container
+  display: flex
+  flex-wrap: nowrap
+
+.quest-container--options
+  display: flex
+  flex-grow: 1
+  justify-content: space-between
+
+.quest-container--function
+  display: flex
+  justify-content: space-between
+  flex-grow: 0.3

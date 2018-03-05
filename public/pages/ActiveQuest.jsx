@@ -18,6 +18,7 @@ class ActiveQuest extends Component {
     );
   }
 }
+
 ActiveQuest.propTypes = {
   match: PropTypes.shape({
     url: PropTypes.string

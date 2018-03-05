@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CrossIcon from '../../Icons/CrossIcon';
+import CheckMarkIcon from '../../Icons/CheckMarkIcon';
 
 class QuestsItem extends Component {
   constructor() {
@@ -23,34 +24,32 @@ class QuestsItem extends Component {
 
   render() {
     return (
-      <div className="ada-row">
-        <div className="ada-col-md-6">
-          <div className="quest__title">
-            <Link to={`/quests/${this.props.activeQuest._id}`}>{this.props.activeQuest.title}</Link>
-          </div>
+      <div className="quest-container">
+        <div className="quest__title">
+          <Link to={`/quests/${this.props.activeQuest._id}`}>{this.props.activeQuest.title}</Link>
         </div>
-        <div className="ada-col-md-2">
+        <div className="quest-container--options">
           <div className="quest__score">
             {this.props.activeQuest.score}
           </div>
-        </div>
-        <div
-          className="ada-col-md-2"
-          onClick={this.handleUpdateActiveQuest}
-          onKeyPress={this.handleUpdateActiveQuest}
-          role="button"
-          tabIndex="0"
-        >
-          <CrossIcon />
-        </div>
-        <div
-          className="ada-col-md-2"
-          onClick={this.handleCompleteQuest}
-          onKeyPress={this.handleCompleteQuest}
-          role="button"
-          tabIndex="0"
-        >
-          <button>Accept</button>
+          <div className="quest-container--function">
+            <div
+              onClick={this.handleCompleteQuest}
+              onKeyPress={this.handleCompleteQuest}
+              role="button"
+              tabIndex="0"
+            >
+              <CheckMarkIcon iconClass="accept-icon" />
+            </div>
+            <div
+              onClick={this.handleUpdateActiveQuest}
+              onKeyPress={this.handleUpdateActiveQuest}
+              role="button"
+              tabIndex="0"
+            >
+              <CrossIcon iconClass="reject-icon" />
+            </div>
+          </div>
         </div>
       </div>
     );
