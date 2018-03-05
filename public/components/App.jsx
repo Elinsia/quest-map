@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import Header from './Header/Header.container';
 import Menu from './Menu/Menu.container';
 import Wrap from './Wrap/Wrap.container';
@@ -27,4 +28,4 @@ App.propTypes = {
   openMenu: PropTypes.bool.isRequired
 };
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

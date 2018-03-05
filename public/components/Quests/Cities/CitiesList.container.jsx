@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CitiesList from './CitiesList.component';
-import { showActiveCities } from '../../actions/citiesActions';
+import showActiveCities from '../../../actions/cities';
 
 const mapStateToProps = state => ({
   citiesActiveList: state.cities.activeCities
