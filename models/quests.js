@@ -9,6 +9,7 @@ const questSchema = new Schema({
     latitude: { type: Number, require: true },
     longitude: { type: Number, require: true }
   },
+  type: { type: String, require: true },
   shortDescription: { type: String, require: true },
   fullDescription: { type: String, require: true },
   score: { type: Number, require: true },

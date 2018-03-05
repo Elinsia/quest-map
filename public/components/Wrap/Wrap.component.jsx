@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-
 class Wrap extends Component {
   render() {
     return (
@@ -13,7 +12,6 @@ class Wrap extends Component {
     );
   }
 }
-
 
 Wrap.propTypes = {
   openMenu: PropTypes.bool.isRequired,

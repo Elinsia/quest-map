@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Header from './Header.component';
 
-import { openMenu } from '../../actions/menuActions';
+import { openMenu } from '../../actions/menu';
 
 const mapStateToProps = state => ({
   openMenu: state.menu

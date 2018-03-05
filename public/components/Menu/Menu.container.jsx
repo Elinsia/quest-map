@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Menu from './Menu.component';
 
-import { closeMenu } from '../../actions/menuActions';
+import { closeMenu } from '../../actions/menu';
 
 const mapStateToProps = state => ({
   openMenu: state.menu

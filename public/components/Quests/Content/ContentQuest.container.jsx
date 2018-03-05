@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ContentQuest from './ContentQuest.component';
-import { getCurrentQuest } from '../../actions/questsActions';
+import { getCurrentQuest } from '../../../actions/quests';
 
 const mapStateToProps = state => ({
   currentQuest: state.quests.currentQuest

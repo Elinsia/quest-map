@@ -1,19 +1,37 @@
 import { combineReducers } from 'redux';
-import { GET_CURRENT_QUEST_SUCCESS, SHOW_ACTIVE_QUESTS_SUCCESS } from '../constants/actionTypes';
+import {
+  GET_CURRENT_QUEST_SUCCESS, SHOW_QUESTS_SUCCESS, UPDATE_QUESTS_SUCCESS,
+  SET_VISIBILITY_FILTER, VisibilityFilters
+} from '../constants/actionTypes';
 
-function activeQuests(state = {}, action) {
+const { SHOW_ALL } = VisibilityFilters;
+
+function citiesQuests(state = {}, action) {
   switch (action.type) {
-    case SHOW_ACTIVE_QUESTS_SUCCESS: {
-      const citiesQuests = {};
+    case SHOW_QUESTS_SUCCESS: {
+      const cityQuests = {};
       for (let i = 0; i < action.payload.data.length; i += 1) {
         const key = action.payload.data[i].city;
-        if (citiesQuests[key]) {
-          citiesQuests[key].push(action.payload.data[i]);
+        if (cityQuests[key]) {
+          cityQuests[key].push(action.payload.data[i]);
         } else {
-          citiesQuests[key] = [action.payload.data[i]];
+          cityQuests[key] = [action.payload.data[i]];
         }
       }
-      return { ...state, ...citiesQuests };
+      return { ...state, ...cityQuests };
+    }
+    case UPDATE_QUESTS_SUCCESS: {
+      const cityId = action.payload.data.city;
+
+      return {
+        ...state,
+        [cityId]: state[cityId].map((quest) => {
+          if (quest._id === action.payload.data._id) {
+            return action.payload.data;
+          }
+          return quest;
+        })
+      };
     }
     default:
       return state;
@@ -30,8 +48,18 @@ function currentQuest(state = {}, action) {
   }
 }
 
+function visibilityFilter(state = SHOW_ALL, action) {
+  switch (action.type) {
+    case SET_VISIBILITY_FILTER: {
+      return action.filter;
+    }
+    default:
+      return state;
+  }
+}
+
 const questReducer = combineReducers({
-  activeQuests, currentQuest
+  citiesQuests, currentQuest, visibilityFilter
 });
 
 export default questReducer;

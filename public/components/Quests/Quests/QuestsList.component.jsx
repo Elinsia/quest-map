@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import QuestsItem from './QuestsItem.component';
+import QuestsItem from './QuestsItem.container';
 
 class QuestsList extends Component {
   componentWillMount() {
-    this.props.showActiveQuests();
+    this.props.showQuests();
   }
 
   render() {
@@ -29,7 +29,7 @@ class QuestsList extends Component {
 
 QuestsList.propTypes = {
   className: PropTypes.string.isRequired,
-  showActiveQuests: PropTypes.func.isRequired,
+  showQuests: PropTypes.func.isRequired,
   questsActiveList: PropTypes.array
 };
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import CitiesListContainer from '../components/Quests/CitiesList.container';
-import ContentQuest from '../components/Quests/ContentQuest.container';
+import CitiesListContainer from '../components/Quests/Cities/CitiesList.container';
+import ContentQuest from '../components/Quests/Content/ContentQuest.container';
 
 class ActiveQuest extends Component {
   render() {

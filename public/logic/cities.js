@@ -1,14 +1,5 @@
 import { createLogic } from 'redux-logic';
-import {
-  SHOW_ACTIVE_CITIES, SHOW_ACTIVE_CITIES_SUCCESS, SHOW_ACTIVE_CITIES_FAILURE
-} from '../constants/actionTypes';
-
-export function showActiveCities(request) {
-  return {
-    type: SHOW_ACTIVE_CITIES,
-    request
-  };
-}
+import { SHOW_ACTIVE_CITIES, SHOW_ACTIVE_CITIES_FAILURE, SHOW_ACTIVE_CITIES_SUCCESS } from '../constants/actionTypes';
 
 const getActiveCities = createLogic({
   type: SHOW_ACTIVE_CITIES,

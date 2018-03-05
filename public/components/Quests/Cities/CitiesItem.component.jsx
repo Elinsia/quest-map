@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OpenIcon from '../Icons/OpenIcon';
-import QuestsList from './QuestsList.container';
+import OpenIcon from '../../Icons/OpenIcon';
+import QuestsList from '../Quests/QuestsList.container';
 
 class CitiesItem extends Component {
   constructor() {
