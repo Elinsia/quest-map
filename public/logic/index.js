@@ -1,5 +1,5 @@
-import quests from './quests';
-import cities from './cities';
+import quests from '../pages/Quests/Quests.logics';
+import cities from '../pages/Quests/Cities.logics';
 
 const logics = [
   ...cities,
