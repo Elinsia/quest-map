@@ -1,4 +1,4 @@
-import INIT_MAP from './Map.constants';
+import { INIT_MAP } from './Map.constants';
 
 export default function initMap(payload) {
   return {

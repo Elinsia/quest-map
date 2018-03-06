@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import QuestsList from './QuestsList.component';
 import { setVisibilityFilter, showQuests } from '../../Quests.actions';
-import getVisibleQuests from '../../Quests.selectors';
+import { getVisibleQuests } from '../../Quests.selectors';
 import { VisibilityFilters } from '../../Quests.constants';
 
 const mapStateToProps = (state, props) => ({

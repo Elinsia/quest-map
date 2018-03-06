@@ -1,4 +1,4 @@
-const getVisibleQuests = (quests, filter) => {
+export const getVisibleQuests = (quests, filter) => { // eslint-disable-line import/prefer-default-export
   switch (filter) {
     case 'SHOW_ALL':
       return quests;
@@ -11,5 +11,3 @@ const getVisibleQuests = (quests, filter) => {
       return filter;
   }
 };
-
-export { getVisibleQuests as default };
