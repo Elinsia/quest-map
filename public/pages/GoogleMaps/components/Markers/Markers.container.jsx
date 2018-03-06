@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Markers from './Markers.component';
-import { showActiveQuests } from '../../../Quests/Quests.actions';
+import { showQuests } from '../../../Quests/Quests.actions';
 
 const mapStateToProps = state => ({
   map: state.map.initMap.map,
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   showActiveQuests: () => {
-    dispatch(showActiveQuests());
+    dispatch(showQuests());
   }
 });
 
