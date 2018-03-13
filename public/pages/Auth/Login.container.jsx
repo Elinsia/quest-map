@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import QuestsItem from './Login.component';
+import Login from './Login.component';
 import { requestLogin } from './Auth.actions';
 
 const mapDispatchToProps = dispatch => ({
@@ -8,4 +8,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(QuestsItem);
+export default connect(null, mapDispatchToProps)(Login);

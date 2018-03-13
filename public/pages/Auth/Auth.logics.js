@@ -1,11 +1,12 @@
 import { createLogic } from 'redux-logic';
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './Auth.constants';
+import { LOGIN_REQUEST } from './Auth.constants';
+import { loginError, receiveLogin } from './Auth.actions';
 
 const loginUser = createLogic({
   type: LOGIN_REQUEST,
   latest: true,
 
-  process({ action }, dispatch, done) {
+  process({ action }, dispatch) {
     fetch('http://localhost:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
@@ -14,27 +15,18 @@ const loginUser = createLogic({
         password: action.creds.password
       })
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
+      .then(res => res.json()
+        .then(user => ({ user, res })))
+      .then(({ user, res }) => { // eslint-disable-line consistent-return
+        if (!res.ok) {
+          dispatch(loginError(user.error.message));
+          return Promise.reject(user);
         }
-        throw new Error();
+
+        localStorage.setItem('token', user.token);
+        dispatch(receiveLogin(user));
       })
-      .then((res) => {
-        localStorage.setItem('token', res.token);
-        dispatch({
-          type: LOGIN_SUCCESS,
-          payload: res
-        });
-        done();
-      })
-      .catch((res) => {
-        dispatch({
-          type: LOGIN_FAILURE,
-          payload: res
-        });
-        done();
-      });
+      .catch(err => console.log('Error: ', err));
   }
 });
 
