@@ -35,7 +35,9 @@ class CitiesItem extends Component {
           </div>
           <OpenIcon iconClass={`ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`} />
         </div>
-        <QuestsList cityId={this.props.id} className={`ada-panel__content ${this.state.isOpen ? 'open' : ''}`} />
+        { !this.props.questKind &&
+          <QuestsList cityId={this.props.id} className={`ada-panel__content ${this.state.isOpen ? 'open' : ''}`} />
+        }
       </div>
     );
   }
@@ -43,7 +45,8 @@ class CitiesItem extends Component {
 
 CitiesItem.propTypes = {
   activeCity: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  questKind: PropTypes.bool.isRequired
 };
 
 export default CitiesItem;
