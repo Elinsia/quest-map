@@ -6,7 +6,7 @@ const loginUser = createLogic({
   type: LOGIN_REQUEST,
   latest: true,
 
-  process({ action }, dispatch) {
+  process({ action }, dispatch, done) {
     fetch('http://localhost:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
@@ -25,6 +25,7 @@ const loginUser = createLogic({
 
         localStorage.setItem('token', user.token);
         dispatch(receiveLogin(user));
+        done();
       })
       .catch(err => console.log('Error: ', err));
   }
