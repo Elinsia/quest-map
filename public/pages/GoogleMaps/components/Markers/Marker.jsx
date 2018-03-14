@@ -34,5 +34,9 @@ Marker.propTypes = {
   quests: PropTypes.array,
   map: PropTypes.object
 };
+Marker.defaultProps = {
+  quests: [],
+  map: {}
+};
 
 export default Marker;
