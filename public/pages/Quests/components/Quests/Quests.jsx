@@ -6,10 +6,12 @@ import ContentQuest from '../Content/ContentQuest.container';
 
 class ActiveQuest extends Component {
   render() {
+    const questKind = false;
+
     return (
       <div className="ada-row">
         <div className="ada-col-md-5">
-          <CitiesListContainer />
+          <CitiesListContainer questKind={questKind} />
         </div>
         <div className="ada-col-md-7">
           <Route path={`${this.props.match.url}/:questId`} component={ContentQuest} />

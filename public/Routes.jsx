@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import ActiveQuest from './pages/Quests/components/Quests/Quests';
 import Map from './pages/GoogleMaps/components/Map/index';
+import Login from './pages/Auth/Login.container';
 
 class Routes extends Component {
   render() {
@@ -10,6 +11,7 @@ class Routes extends Component {
       <Switch>
         <Route exact path="/map" component={Map} />
         <Route path="/quests" component={ActiveQuest} />
+        <Route path="/signin" component={Login} />
       </Switch>
     );
   }

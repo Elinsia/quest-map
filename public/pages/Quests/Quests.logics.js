@@ -68,9 +68,7 @@ const updateQuest = createLogic({
   process({ action }, dispatch, done) {
     fetch(`http://localhost:3000/quests/${action.id}`, {
       method: 'PATCH',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      },
+      headers: { 'Content-type': 'application/json; charset=UTF-8' },
       body: JSON.stringify({
         active: action.payload,
         complete: action.payload
