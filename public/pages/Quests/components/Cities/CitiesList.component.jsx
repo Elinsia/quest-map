@@ -21,7 +21,7 @@ class CitiesList extends Component {
             key={city._id}
             activeCity={city}
             id={city._id}
-            questKind={this.props.questKind}
+            citiesList={this.props.citiesList}
           />
         ))}
       </div>
@@ -36,7 +36,7 @@ CitiesList.propTypes = {
     title: PropTypes.string.isRequired,
     quests: PropTypes.array.isRequired
   }).isRequired).isRequired,
-  questKind: PropTypes.bool.isRequired
+  citiesList: PropTypes.func.isRequired
 };
 
 export default CitiesList;
