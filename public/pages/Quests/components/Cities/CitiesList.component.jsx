@@ -10,10 +10,6 @@ class CitiesList extends Component {
   render() {
     const activeCities = this.props.citiesActiveList;
 
-    if (!activeCities) {
-      return null;
-    }
-
     return (
       <div className="ada-panel">
         {activeCities.map(city => (
