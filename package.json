@@ -7,8 +7,9 @@
     "precommit": "npm run lint",
     "lint": "eslint --ext .jsx,.js public/",
     "build": "webpack",
-    "start": "webpack-dev-server --open --watch",
-    "server": "node ./bin/www"
+    "all": "npm-run-all --parallel server start",
+    "server": "node ./bin/www",
+    "start": "webpack-dev-server --open --watch"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "json-server": "^0.12.1",
     "node-sass": "^4.7.2",
     "nodemon": "^1.14.12",
+    "npm-run-all": "^4.1.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",

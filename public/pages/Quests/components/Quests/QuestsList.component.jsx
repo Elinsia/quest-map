@@ -8,15 +8,9 @@ class QuestsList extends Component {
   }
 
   render() {
-    const activeQuests = this.props.questsActiveList;
-
-    if (!activeQuests) {
-      return null;
-    }
-
     return (
       <div className={this.props.className}>
-        {activeQuests.map(quest => (
+        {this.props.activeQuests.map(quest => (
           <QuestsItem
             key={quest._id}
             activeQuest={quest}
@@ -30,11 +24,11 @@ class QuestsList extends Component {
 QuestsList.propTypes = {
   className: PropTypes.string.isRequired,
   showQuests: PropTypes.func.isRequired,
-  questsActiveList: PropTypes.array
+  activeQuests: PropTypes.array
 };
 
 QuestsList.defaultProps = {
-  questsActiveList: []
+  activeQuests: []
 };
 
 export default QuestsList;

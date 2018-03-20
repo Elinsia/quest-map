@@ -36,6 +36,7 @@ class CitiesItem extends Component {
         </div>
         {this.props.citiesList({
           cityId: this.props.id,
+          cityQuests: this.props.activeCity.quests,
           className: `ada-panel__content ${this.state.isOpen ? 'open' : ''}`
         })}
       </div>

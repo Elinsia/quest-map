@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { SHOW_ACTIVE_CITIES_SUCCESS } from './Cities.constants';
 
-function activeCities(state = [], action) {
+function citiesList(state = [], action) {
   switch (action.type) {
     case SHOW_ACTIVE_CITIES_SUCCESS:
       return [...state, ...action.payload.data];
@@ -11,7 +11,7 @@ function activeCities(state = [], action) {
 }
 
 const cityReducer = combineReducers({
-  activeCities
+  citiesList
 });
 
 export default cityReducer;

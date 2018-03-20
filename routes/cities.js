@@ -5,7 +5,7 @@ const City = require('../models/cities');
 
 router.get('/', function(req, res, next) {
   City.find()
-    .populate('quests', 'title')
+    // .populate('quests', 'title')
     .exec(function(err, cities) {
       if (err) {
         return res.status(500).json({
@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req, res, next) {
   City.findById(req.params.id)
-    .populate('quests', 'title')
+    // .populate('quests', 'title')
     .exec(function (err, city) {
       if (err) {
         return res.status(500).json({

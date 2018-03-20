@@ -3,7 +3,7 @@ import CitiesList from './CitiesList.component';
 import showActiveCities from '../../Cities.actions';
 
 const mapStateToProps = state => ({
-  citiesActiveList: state.cities.activeCities
+  citiesActiveList: state.cities.citiesList
 });
 
 const mapDispatchToProps = dispatch => ({
