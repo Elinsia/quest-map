@@ -22,7 +22,6 @@ const loginUser = createLogic({
           dispatch(loginError(user.error.message));
           return Promise.reject(user);
         }
-
         localStorage.setItem('token', user.token);
         dispatch(receiveLogin(user));
         done();
