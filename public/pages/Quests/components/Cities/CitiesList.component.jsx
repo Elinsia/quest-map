@@ -20,7 +20,6 @@ class CitiesList extends Component {
           <CitiesItem
             key={city._id}
             activeCity={city}
-            id={city._id}
             citiesList={this.props.citiesList}
           />
         ))}

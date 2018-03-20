@@ -35,7 +35,6 @@ class CitiesItem extends Component {
           <OpenIcon iconClass={`ada-panel__icon ${this.state.isOpen ? 'ada-panel__icon--active' : ''}`} />
         </div>
         {this.props.citiesList({
-          cityId: this.props.id,
           cityQuests: this.props.activeCity.quests,
           className: `ada-panel__content ${this.state.isOpen ? 'open' : ''}`
         })}
@@ -46,7 +45,6 @@ class CitiesItem extends Component {
 
 CitiesItem.propTypes = {
   activeCity: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired,
   citiesList: PropTypes.func.isRequired
 };
 
