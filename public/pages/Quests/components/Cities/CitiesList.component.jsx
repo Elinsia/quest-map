@@ -8,11 +8,9 @@ class CitiesList extends Component {
   }
 
   render() {
-    const activeCities = this.props.citiesActiveList;
-
     return (
       <div className="ada-panel">
-        {activeCities.map(city => (
+        {this.props.citiesActiveList.map(city => (
           <CitiesItem
             key={city._id}
             activeCity={city}
