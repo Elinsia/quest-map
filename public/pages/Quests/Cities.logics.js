@@ -6,7 +6,9 @@ const getActiveCities = createLogic({
   latest: true,
 
   process(_, dispatch, done) {
-    fetch('http://localhost:3000/cities')
+    fetch('http://localhost:3000/cities', {
+      headers: {}
+    })
       .then(res => res.json())
       .then((res) => {
         dispatch({

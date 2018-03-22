@@ -12,10 +12,9 @@ const getQuests = createLogic({
   process(_, dispatch, done) {
     fetch('http://localhost:3000/quests', {
       method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
-    }).then(res => res.json())
+      headers: { 'Content-type': 'application/json; charset=UTF-8' }
+    })
+      .then(res => res.json())
       .then((res) => {
         dispatch({
           type: SHOW_QUESTS_SUCCESS,
@@ -40,9 +39,7 @@ const showCurrentQuest = createLogic({
   process({ action }, dispatch, done) {
     fetch(`http://localhost:3000/quests/${action.id}`, {
       method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
+      headers: { 'Content-type': 'application/json; charset=UTF-8' }
     }).then(res => res.json())
       .then((res) => {
         dispatch({
