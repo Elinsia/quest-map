@@ -40,7 +40,8 @@ const showCurrentQuest = createLogic({
     fetch(`http://localhost:3000/quests/${action.id}`, {
       method: 'GET',
       headers: { 'Content-type': 'application/json; charset=UTF-8' }
-    }).then(res => res.json())
+    })
+      .then(res => res.json())
       .then((res) => {
         dispatch({
           type: GET_CURRENT_QUEST_SUCCESS,
