@@ -4,7 +4,7 @@ import { SHOW_ACTIVE_CITIES_SUCCESS } from './Cities.constants';
 function activeCities(state = [], action) {
   switch (action.type) {
     case SHOW_ACTIVE_CITIES_SUCCESS:
-      return [...state, ...action.payload.data];
+      return action.payload.data;
     default:
       return state;
   }

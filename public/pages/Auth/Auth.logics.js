@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic';
+import { push } from 'react-router-redux';
 import { LOGIN_REQUEST } from './Auth.constants';
 import { loginError, receiveLogin } from './Auth.actions';
 
@@ -24,6 +25,7 @@ const loginUser = createLogic({
         }
         localStorage.setItem('token', user.token);
         dispatch(receiveLogin(user));
+        dispatch(push('/quests'));
         done();
       })
       .catch(err => console.log('Error: ', err));
