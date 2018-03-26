@@ -170,8 +170,8 @@ router.patch('/:id', function(req, res, next) {
       quest.active = req.body.active;
       if (quest.active === true){
         quest.users = user;
+        quest.complete = req.body.complete;
         if (quest.complete === true) {
-          quest.complete = req.body.complete;
           quest.save(function(err, result) {
             if (err) {
               return res.status(500).json({
