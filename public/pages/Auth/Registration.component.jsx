@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CrossIcon from '../../shared/Icons/CrossIcon';
 
-class Login extends Component {
+class Registration extends Component {
   handleClick() {
     const login = this.login;
     const password = this.password;
-    const creds = { login: login.value.trim(), password: password.value.trim() };
-    this.props.onLoginClick(creds);
+    const firstName = this.firstName;
+    const creds = { login: login.value.trim(), password: password.value.trim(), firstName: firstName.value.trim() };
+    this.props.onRegistrationClick(creds);
   }
 
   render() {
@@ -17,7 +18,7 @@ class Login extends Component {
         <div className="ada-modal__dialog">
           <div className="ada-modal__content">
             <div className="ada-form__header">
-              <h2 className="ada-title">Авторизация</h2>
+              <h2 className="ada-title">Регистрация</h2>
               <Link className="icon-close" to="/">
                 <CrossIcon />
               </Link>
@@ -42,14 +43,26 @@ class Login extends Component {
                 ref={(password) => { this.password = password; }}
               />
             </div>
+            <div className="ada-form-control">
+              <label className="ada-form-control__label" htmlFor="firstName">Имя</label>
+              <input
+                className="ada-form-control__input"
+                type="text"
+                placeholder="Имя"
+                id="firstName"
+                ref={(firstName) => { this.firstName = firstName; }}
+              />
+            </div>
             <div className="ada-form__footer">
               <div className="ada-row">
                 <div className="ada-col-md-6">
-                  <button className="ada-btn ada-btn--blank" onClick={() => this.handleClick()}>Войти</button>
+                  <button className="ada-btn ada-btn--blank" onClick={() => this.handleClick()}>
+                    Регистрация
+                  </button>
                 </div>
                 <div className="ada-col-md-6">
-                  Нет аккаунта?
-                  <Link className="header--auth" to="/signup"> Регистрация</Link>
+                  Есть аккаунт?
+                  <Link className="header--auth" to="/signin"> Авторизация</Link>
                 </div>
               </div>
             </div>
@@ -60,8 +73,8 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  onLoginClick: PropTypes.func.isRequired
+Registration.propTypes = {
+  onRegistrationClick: PropTypes.func.isRequired
 };
 
-export default Login;
+export default Registration;
