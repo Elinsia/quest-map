@@ -19,13 +19,11 @@ class Header extends Component {
         </span>
 
         {!isAuthenticated &&
-          <Link to="/signin">Sign in</Link>
+          <Link className="header--auth" to="/signin">Sign in</Link>
         }
 
         {isAuthenticated &&
-          <button onClick={() => onLogoutClick()}>
-            <Link to="/signin">Logout</Link>
-          </button>
+          <Link className="header--auth" to="/signin" onClick={() => onLogoutClick()}>Logout</Link>
         }
 
       </div>
