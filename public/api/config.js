@@ -9,7 +9,5 @@ fetchIntercept.register({
     }
 
     return [url, config];
-  },
-
-  response: response => response
+  }
 });
