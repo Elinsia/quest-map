@@ -73,7 +73,6 @@ router.post('/signup', function(req, res, next) {
     password: bcrypt.hashSync(req.body.password, 10),
     firstName: req.body.firstName
   });
-  console.log(req.body.password);
   user.save(function (err, result) {
     if (err) {
       return res.status(500).json({
