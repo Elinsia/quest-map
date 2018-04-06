@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Registration from './Registration.component';
-import { requestRegistration } from './Auth.actions';
+import { requestRegistration } from '../Auth.actions';
 
 const mapDispatchToProps = dispatch => ({
   onRegistrationClick: (creds) => {

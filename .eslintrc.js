@@ -30,6 +30,7 @@ module.exports = {
       },
       "allowChildren": true
     }],
+    'no-console': 'off',
     'max-len': ['error', 120, 4],
     'react/no-array-index-key': 'warn',
     'no-underscore-dangle': ["error", { "allow": ["_id"] }],

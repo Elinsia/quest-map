@@ -35,12 +35,45 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+router.get('/data/profile', function(req, res, next) {
+  let decoded = jwt.decode(req.headers['x-access-token']);
+  User.findById(decoded.user._id)
+    .exec(function (err, user) {
+      if (err) {
+        return res.status(500).json({
+          title: 'An error occurred',
+          error: err
+        });
+      }
+      res.status(200).json({
+        data: {
+          id: user._id,
+          firstName: user.firstName,
+          login: user.login
+        }
+      });
+    });
+});
+
+router.use('/data/profile', function(req, res, next) {
+  jwt.verify(req.headers['x-access-token'], 'secret', function (err, decoded) {
+    if (err) {
+      return res.status(401).json({
+        title: 'Not Authenticated',
+        error: err
+      });
+    }
+    next();
+  });
+});
+
 router.post('/signup', function(req, res, next) {
   let user = new User({
     login: req.body.login,
     password: bcrypt.hashSync(req.body.password, 10),
     firstName: req.body.firstName
   });
+  console.log(req.body.password);
   user.save(function (err, result) {
     if (err) {
       return res.status(500).json({
@@ -91,20 +124,44 @@ router.patch('/:id', function(req, res, next) {
           error: {user: 'User not found'}
         });
       }
-      user.login = req.body.login;
-      user.password = req.body.password;
-      user.firstName = req.body.firstName;
-      user.save(function(err, result) {
-        if (err) {
-          return res.status(500).json({
-            title: 'An error occurred',
-            error: err
+      if (req.body.password) {
+        user.password = bcrypt.hashSync(req.body.password, 10);
+
+        user.save(function(err, result) {
+          if (err) {
+            return res.status(500).json({
+              title: 'An error occurred',
+              error: err
+            });
+          }
+          res.status(200).json({
+            data: {
+              id: result._id,
+              firstName: result.firstName,
+              login: result.login
+            }
           });
-        }
-        res.status(200).json({
-          data: result
         });
-      });
+      }
+      if (req.body.firstName) {
+        user.firstName = req.body.firstName;
+
+        user.save(function(err, result) {
+          if (err) {
+            return res.status(500).json({
+              title: 'An error occurred',
+              error: err
+            });
+          }
+          res.status(200).json({
+            data: {
+              id: result._id,
+              firstName: result.firstName,
+              login: result.login
+            }
+          });
+        });
+      }
     });
 });
 

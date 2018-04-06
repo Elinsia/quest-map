@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import CrossIcon from '../../shared/Icons/CrossIcon';
+import CrossIcon from '../../../shared/Icons/CrossIcon';
 
 class Registration extends Component {
   handleClick() {

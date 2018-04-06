@@ -1,11 +1,13 @@
 import quests from '../pages/Quests/Quests.logics';
 import cities from '../pages/Quests/Cities.logics';
-import loginUser from '../pages/Auth/Auth.logics';
+import auth from '../pages/Auth/Auth.logics';
+import users from '../pages/Profile/Users.logics';
 
 const logics = [
   ...cities,
   ...quests,
-  ...loginUser
+  ...auth,
+  ...users
 ];
 
 export default logics;
