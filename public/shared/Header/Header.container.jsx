@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
+import { receiveLogout, requestLogout } from 'Public/pages/Auth/Auth.actions';
 import Header from './Header.component';
 import { openMenu } from '../Menu/Menu.actions';
-import { receiveLogout, requestLogout } from '../../pages/Auth/Auth.actions';
 
 const mapStateToProps = state => ({
   openMenu: state.menu,

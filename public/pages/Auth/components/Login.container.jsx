@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Login from './Login.component';
-import { requestLogin } from './Auth.actions';
+import { requestLogin } from '../Auth.actions';
 
 const mapDispatchToProps = dispatch => ({
   onLoginClick: (creds) => {

@@ -1,44 +1,24 @@
 import { combineReducers } from 'redux';
+import { isAuth } from 'Public/services/authManager';
 import {
-  LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS,
-  REGISTRATION_REQUEST, REGISTRATION_FAILURE, REGISTRATION_SUCCESS
+  LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT_SUCCESS,
+  REGISTRATION_FAILURE, REGISTRATION_SUCCESS
 } from './Auth.constants';
 
 function auth(state = {
-  isAuthenticated: !!localStorage.getItem('token')
+  isAuthenticated: isAuth()
 }, action) {
   switch (action.type) {
-    case LOGIN_REQUEST:
-      return Object.assign({}, state, {
-        isAuthenticated: false,
-        user: action.creds
-      });
     case LOGIN_SUCCESS:
-      return Object.assign({}, state, {
-        isAuthenticated: true,
-        errorMessage: ''
-      });
+      return { ...state, isAuthenticated: true, errorMessage: '' };
     case LOGIN_FAILURE:
-      return Object.assign({}, state, {
-        isAuthenticated: false,
-        errorMessage: action.message
-      });
-    case REGISTRATION_REQUEST:
-      return Object.assign({}, state, {
-        user: action.creds
-      });
+      return { ...state, isAuthenticated: false, errorMessage: action.message };
     case REGISTRATION_SUCCESS:
-      return Object.assign({}, state, {
-        errorMessage: ''
-      });
+      return { ...state, errorMessage: '' };
     case REGISTRATION_FAILURE:
-      return Object.assign({}, state, {
-        errorMessage: action.message
-      });
+      return { ...state, errorMessage: action.message };
     case LOGOUT_SUCCESS:
-      return Object.assign({}, state, {
-        isAuthenticated: false
-      });
+      return { ...state, isAuthenticated: false };
     default:
       return state;
   }

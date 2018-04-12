@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import CrossIcon from '../../../../shared/Icons/CrossIcon';
-import CheckMarkIcon from '../../../../shared/Icons/CheckMarkIcon';
+import CrossIcon from 'Public/shared/Icons/CrossIcon';
+import CheckMarkIcon from 'Public/shared/Icons/CheckMarkIcon';
 
 class QuestsItem extends Component {
   constructor() {
