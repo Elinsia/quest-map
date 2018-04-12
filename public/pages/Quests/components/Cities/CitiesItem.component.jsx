@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OpenIcon from '../../../../shared/Icons/OpenIcon';
+import OpenIcon from 'Public/shared/Icons/OpenIcon';
 
 class CitiesItem extends Component {
   constructor() {

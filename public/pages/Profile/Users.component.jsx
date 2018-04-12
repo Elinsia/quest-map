@@ -42,7 +42,7 @@ class Users extends Component {
   handleClickName() {
     const firstName = this.firstName;
     const creds = { firstName: firstName.value.trim() };
-    console.log(this.props.meFromToken.id);
+
     this.props.onChangeClick(this.props.meFromToken.id, creds);
   }
 

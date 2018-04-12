@@ -8,6 +8,8 @@ import Login from './pages/Auth/components/Login.container';
 import Registration from './pages/Auth/components/Registration.container';
 import Users from './pages/Profile/Users.container';
 
+import { isAuth } from './services/authManager';
+
 class Routes extends Component {
   render() {
     return (
@@ -26,7 +28,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => ( // eslint-disable-
   <Route
     {...rest}
     render={props =>
-      (localStorage.getItem('token') ? (
+      (isAuth() ? (
         <Component {...props} />
       ) : (
         <Redirect

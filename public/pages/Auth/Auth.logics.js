@@ -3,12 +3,14 @@ import { push } from 'react-router-redux';
 import { LOGIN_REQUEST, REGISTRATION_REQUEST } from './Auth.constants';
 import { loginError, receiveLogin, registrationError, receiveRegistration } from './Auth.actions';
 
+const baseUrl = process.env.API_URL;
+
 const loginUser = createLogic({
   type: LOGIN_REQUEST,
   latest: true,
 
   process({ action }, dispatch, done) {
-    fetch('http://localhost:3000/users/signin', {
+    fetch(`${baseUrl}/users/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       body: JSON.stringify({
@@ -20,7 +22,6 @@ const loginUser = createLogic({
         .then(user => ({ user, res })))
       .then(({ user, res }) => { // eslint-disable-line consistent-return
         if (!res.ok) {
-          dispatch(loginError(user.error.message));
           return Promise.reject(user);
         }
         localStorage.setItem('token', user.token);
@@ -28,7 +29,9 @@ const loginUser = createLogic({
         dispatch(push('/quests'));
         done();
       })
-      .catch(err => console.log('Error: ', err));
+      .catch((err) => {
+        dispatch(loginError(err));
+      });
   }
 });
 
@@ -37,7 +40,7 @@ const registrationUser = createLogic({
   latest: true,
 
   process({ action }, dispatch, done) {
-    fetch('http://localhost:3000/users/signup', {
+    fetch(`${baseUrl}/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       body: JSON.stringify({
@@ -50,14 +53,15 @@ const registrationUser = createLogic({
         .then(user => ({ user, res })))
       .then(({ user, res }) => { // eslint-disable-line consistent-return
         if (!res.ok) {
-          dispatch(registrationError(user.error.message));
           return Promise.reject(user);
         }
         dispatch(receiveRegistration(user));
         dispatch(push('/signup'));
         done();
       })
-      .catch(err => console.log('Error: ', err));
+      .catch((err) => {
+        dispatch(registrationError(err));
+      });
   }
 });
 

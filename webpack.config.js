@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
@@ -11,7 +12,10 @@ module.exports = {
       template: './public/index.html'
     }),
     new CleanWebpackPlugin(['build']),
-    new LiveReloadPlugin()
+    new LiveReloadPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify('http://localhost:3000')
+    })
   ],
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -45,6 +49,9 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      Public: path.resolve(__dirname, 'public')
+    }
   }
 };

@@ -2,12 +2,14 @@ import { createLogic } from 'redux-logic';
 import { ME_FROM_TOKEN_REQUEST, UPDATE_USERS_REQUEST } from './Users.constants';
 import { receiveMeFromToken, meFromTokenError, receiveUpdateUsers, updateUsersError } from './Users.actions';
 
+const baseUrl = process.env.API_URL;
+
 const meFromToken = createLogic({
   type: ME_FROM_TOKEN_REQUEST,
   latest: true,
 
   process(_, dispatch, done) {
-    fetch('http://localhost:3000/users/data/profile', {
+    fetch(`${baseUrl}/users/data/profile`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' }
     })
@@ -15,13 +17,14 @@ const meFromToken = createLogic({
         .then(user => ({ user, res })))
       .then(({ user, res }) => { // eslint-disable-line consistent-return
         if (!res.ok) {
-          dispatch(meFromTokenError(user.error.message));
           return Promise.reject(user);
         }
         dispatch(receiveMeFromToken(user));
         done();
       })
-      .catch(err => console.log('Error: ', err));
+      .catch((err) => {
+        dispatch(meFromTokenError(err));
+      });
   }
 });
 
@@ -30,7 +33,7 @@ const updateUser = createLogic({
   latest: true,
 
   process({ action }, dispatch, done) {
-    fetch(`http://localhost:3000/users/${action.id}`, {
+    fetch(`${baseUrl}/users/${action.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       body: JSON.stringify(action.creds)
@@ -39,13 +42,14 @@ const updateUser = createLogic({
         .then(user => ({ user, res })))
       .then(({ user, res }) => { // eslint-disable-line consistent-return
         if (!res.ok) {
-          dispatch(updateUsersError(user.error.message));
           return Promise.reject(user);
         }
         dispatch(receiveUpdateUsers(user));
         done();
       })
-      .catch(err => console.log('Error: ', err));
+      .catch((err) => {
+        dispatch(updateUsersError(err));
+      });
   }
 });
 

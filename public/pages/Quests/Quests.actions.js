@@ -1,5 +1,6 @@
 import {
-  SHOW_QUESTS, GET_CURRENT_QUEST, UPDATE_QUESTS, SET_VISIBILITY_FILTER
+  SHOW_QUESTS, GET_CURRENT_QUEST, UPDATE_QUESTS,
+  SET_VISIBILITY_FILTER
 } from './Quests.constants';
 
 export function showQuests(request) {

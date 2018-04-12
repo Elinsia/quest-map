@@ -34,8 +34,6 @@ export function receiveUpdateUsers(user) {
   };
 }
 
-// export const receiveUpdateUsers = () => ({ type: UPDATE_USERS_SUCCESS });
-
 export function updateUsersError(message) {
   return {
     type: UPDATE_USERS_FAILURE,
