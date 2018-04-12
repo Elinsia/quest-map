@@ -6,7 +6,7 @@ class ContentQuest extends Component {
     this.props.getCurrentQuest(this.props.match.params.questId);
   }
 
-  componentWillUpdate(nextProps) {
+  UNSAFE_componentWillUpdate(nextProps) { // eslint-disable-line camelcase
     if (this.props.match.params.questId !== nextProps.match.params.questId) {
       this.props.getCurrentQuest(nextProps.match.params.questId);
     }
