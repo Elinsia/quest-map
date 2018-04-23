@@ -14,6 +14,12 @@ export const getVisibleQuests = (quests, filter) => { // eslint-disable-line con
   }
 };
 
+export const getMapQuests = (quests) => {
+  if (Object.keys(quests).length !== 0) {
+    return Object.values(quests);
+  }
+};
+
 export const getCityQuests = (cityQuests, quests) => {
   if (Object.keys(quests).length !== 0) {
     return cityQuests.map(questId => quests[questId]);
