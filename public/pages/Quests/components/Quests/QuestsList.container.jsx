@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 import QuestsList from './QuestsList.component';
 import { setVisibilityFilter, showQuests } from '../../Quests.actions';
-import { getVisibleQuests } from '../../Quests.selectors';
+import { getVisibleQuests, getCityQuests } from '../../Quests.selectors';
 import { VisibilityFilters } from '../../Quests.constants';
 
 const mapStateToProps = (state, props) => ({
-  questsActiveList: getVisibleQuests(state.quests.citiesQuests[props.cityId], state.quests.visibilityFilter)
+  activeQuests: getVisibleQuests(
+    getCityQuests(props.cityQuests, state.quests.questsList),
+    state.quests.visibilityFilter
+  )
 });
 
 const mapDispatchToProps = dispatch => ({

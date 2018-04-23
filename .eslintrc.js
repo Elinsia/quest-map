@@ -23,9 +23,17 @@ module.exports = {
     'comma-dangle': ['error', {
       functions: 'ignore'
     }],
+    "jsx-a11y/label-has-for": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+        "every": [ "nesting", "id" ]
+      },
+      "allowChildren": true
+    }],
     'max-len': ['error', 120, 4],
     'react/no-array-index-key': 'warn',
     'no-underscore-dangle': ["error", { "allow": ["_id"] }],
+    'import/prefer-default-export': "off",
     'react/forbid-prop-types': 'off',
     'react/prefer-stateless-function': 'off',
     'react/require-default-props': 'warn',

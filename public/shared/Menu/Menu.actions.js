@@ -1,6 +1,4 @@
-import {
-  OPEN_MENU, CLOSE_MENU
-} from './Menu.constants';
+import { OPEN_MENU, CLOSE_MENU } from './Menu.constants';
 
 export function openMenu() {
   return {

@@ -5,17 +5,18 @@ import {
   UPDATE_QUESTS, UPDATE_QUESTS_FAILURE, UPDATE_QUESTS_SUCCESS
 } from './Quests.constants';
 
+const baseUrl = process.env.API_URL;
+
 const getQuests = createLogic({
   type: SHOW_QUESTS,
   latest: true,
 
   process(_, dispatch, done) {
-    fetch('http://localhost:3000/quests', {
+    fetch(`${baseUrl}/quests`, {
       method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
-    }).then(res => res.json())
+      headers: { 'Content-type': 'application/json; charset=UTF-8' }
+    })
+      .then(res => res.json())
       .then((res) => {
         dispatch({
           type: SHOW_QUESTS_SUCCESS,
@@ -38,12 +39,11 @@ const showCurrentQuest = createLogic({
   latest: true,
 
   process({ action }, dispatch, done) {
-    fetch(`http://localhost:3000/quests/${action.id}`, {
+    fetch(`${baseUrl}/quests/${action.id}`, {
       method: 'GET',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
-    }).then(res => res.json())
+      headers: { 'Content-type': 'application/json; charset=UTF-8' }
+    })
+      .then(res => res.json())
       .then((res) => {
         dispatch({
           type: GET_CURRENT_QUEST_SUCCESS,
@@ -66,11 +66,9 @@ const updateQuest = createLogic({
   latest: true,
 
   process({ action }, dispatch, done) {
-    fetch(`http://localhost:3000/quests/${action.id}`, {
+    fetch(`${baseUrl}/quests/${action.id}`, {
       method: 'PATCH',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      },
+      headers: { 'Content-type': 'application/json; charset=UTF-8' },
       body: JSON.stringify({
         active: action.payload,
         complete: action.payload

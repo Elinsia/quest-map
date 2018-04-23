@@ -6,49 +6,42 @@ import {
 
 const { SHOW_ALL } = VisibilityFilters;
 
-function citiesQuests(state = {}, action) {
+function questsList(state = {}, action) {
   switch (action.type) {
     case SHOW_QUESTS_SUCCESS: {
-      const cityQuests = {};
-      for (let i = 0; i < action.payload.data.length; i += 1) {
-        const key = action.payload.data[i].city;
-        if (cityQuests[key]) {
-          cityQuests[key].push(action.payload.data[i]);
-        } else {
-          cityQuests[key] = [action.payload.data[i]];
-        }
-      }
+      const cityQuests = action.payload.data.reduce((acc, quest) => ({
+        ...acc,
+        [quest._id]: quest
+      }), {});
+
       return { ...state, ...cityQuests };
     }
     case UPDATE_QUESTS_SUCCESS: {
-      const cityId = action.payload.data.city;
+      const questId = action.payload.data._id;
+      const stateQuestId = state[questId]._id;
 
-      return {
-        ...state,
-        [cityId]: state[cityId].map((quest) => {
-          if (quest._id === action.payload.data._id) {
-            return action.payload.data;
-          }
-          return quest;
-        })
-      };
+      if (questId === stateQuestId) {
+        return { ...state, [questId]: action.payload.data };
+      }
+
+      return action.payload.data;
     }
     default:
       return state;
   }
 }
 
-function mapQuests(state = { quests: [] }, action) {
-  switch (action.type) {
-    case SHOW_QUESTS_SUCCESS: {
-      return Object.assign({}, state, {
-        quests: action.payload.data
-      });
-    }
-    default:
-      return state;
-  }
-}
+// function mapQuests(state = { quests: [] }, action) {
+//   switch (action.type) {
+//     case SHOW_QUESTS_SUCCESS: {
+//       return Object.assign({}, state, {
+//         quests: action.payload.data
+//       });
+//     }
+//     default:
+//       return state;
+//   }
+// }
 
 function currentQuest(state = {}, action) {
   switch (action.type) {
@@ -71,7 +64,7 @@ function visibilityFilter(state = SHOW_ALL, action) {
 }
 
 const questReducer = combineReducers({
-  citiesQuests, mapQuests, currentQuest, visibilityFilter
+  questsList, currentQuest, visibilityFilter
 });
 
 export default questReducer;

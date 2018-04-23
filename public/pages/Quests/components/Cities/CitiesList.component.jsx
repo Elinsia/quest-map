@@ -8,19 +8,13 @@ class CitiesList extends Component {
   }
 
   render() {
-    const activeCities = this.props.citiesActiveList;
-
-    if (!activeCities) {
-      return null;
-    }
-
     return (
       <div className="ada-panel">
-        {activeCities.map(city => (
+        {this.props.citiesActiveList.map(city => (
           <CitiesItem
             key={city._id}
             activeCity={city}
-            id={city._id}
+            citiesList={this.props.citiesList}
           />
         ))}
       </div>
@@ -34,7 +28,8 @@ CitiesList.propTypes = {
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     quests: PropTypes.array.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  citiesList: PropTypes.func.isRequired
 };
 
 export default CitiesList;
