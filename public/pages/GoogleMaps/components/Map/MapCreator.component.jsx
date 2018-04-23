@@ -36,6 +36,12 @@ class MapCreator extends Component {
         });
       });
     }
+
+    this.mapContainer.addEventListener('click', (e) => {
+      if (e.target.id === 'info-window-btn') {
+        console.log(`Quest ${e.target.dataset.questId} accepted`);
+      }
+    });
   }
 
   render() {

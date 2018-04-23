@@ -14,7 +14,11 @@ const createMarkers = (quests, map) => {
       draggable: false
     });
 
-    const infoWindowContent = createInfoWindow(quest.title, quest.shortDescription);
+    const infoWindowContent = createInfoWindow(
+      quest.title,
+      quest.shortDescription,
+      quest._id
+    );
     const infoWindow = new google.maps.InfoWindow({
       content: infoWindowContent
     });

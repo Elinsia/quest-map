@@ -1,8 +1,8 @@
-const createInfoWindow = (title, description) => (
+const createInfoWindow = (title, description, id) => (
   `<div>
     <p>Title: ${title}</p>
     <p>Description: ${description}</p>
-    <button>Let's go!</button>
+    <button id="info-window-btn" data-quest-id="${id}">Let's go!</button>
   </div>`
 );
 
