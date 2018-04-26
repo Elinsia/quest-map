@@ -18,14 +18,13 @@ class Header extends Component {
           <BurgerIcon iconClass="ada-header__menu" />
         </span>
 
-          {!isAuthenticated &&
-            <Link className="ada-header__text" to="/signin">Sign in</Link>
-          }
+        {!isAuthenticated &&
+          <Link className="ada-header__text" to="/signin">Sign in</Link>
+        }
 
-          {isAuthenticated &&
-            <Link className="ada-header__text" to="/signin" onClick={() => onLogoutClick()}>Logout</Link>
-          }
-
+        {isAuthenticated &&
+          <Link className="ada-header__text" to="/signin" onClick={() => onLogoutClick()}>Logout</Link>
+        }
 
       </div>
     );

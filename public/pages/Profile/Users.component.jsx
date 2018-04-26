@@ -60,9 +60,9 @@ class Users extends Component {
               tabIndex="0"
               className="profile--edit"
             >
-            Редактировать
-          </span>
-            </p>
+              Редактировать
+            </span>
+          </p>
         </div>
         <div className={`${this.state.firstName ? 'open' : 'hide'}`}>
           <input
