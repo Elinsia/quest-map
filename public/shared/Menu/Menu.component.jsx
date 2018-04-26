@@ -14,7 +14,7 @@ class Menu extends Component {
             role="button"
             tabIndex={0}
           >
-            <CrossIcon />
+            <CrossIcon iconClass="ada-menu__header--cross" />
           </span>
         </div>
         <ul className="ada-menu__container">
