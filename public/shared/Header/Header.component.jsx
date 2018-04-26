@@ -15,16 +15,17 @@ class Header extends Component {
           role="button"
           tabIndex={0}
         >
-          <BurgerIcon />
+          <BurgerIcon iconClass="ada-header__menu" />
         </span>
 
-        {!isAuthenticated &&
-          <Link className="header--auth" to="/signin">Sign in</Link>
-        }
+          {!isAuthenticated &&
+            <Link className="ada-header__text" to="/signin">Sign in</Link>
+          }
 
-        {isAuthenticated &&
-          <Link className="header--auth" to="/signin" onClick={() => onLogoutClick()}>Logout</Link>
-        }
+          {isAuthenticated &&
+            <Link className="ada-header__text" to="/signin" onClick={() => onLogoutClick()}>Logout</Link>
+          }
+
 
       </div>
     );

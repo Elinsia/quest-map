@@ -48,19 +48,41 @@ class Users extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profile">
         <div>
-          FirstName: {this.props.meFromToken.firstName}
+          <h4 className="profile__title">Имя</h4>
+          <p className="profile__text">
+            {this.props.meFromToken.firstName}
+            <span
+              onClick={this.toggleChangeName}
+              onKeyPress={this.toggleChangeName}
+              role="button"
+              tabIndex="0"
+              className="profile--edit"
+            >
+            Редактировать
+          </span>
+            </p>
+        </div>
+        <div className={`${this.state.firstName ? 'open' : 'hide'}`}>
+          <input
+            className="ada-form-control__input"
+            type="text"
+            placeholder="Введите имя"
+            ref={(firstName) => { this.firstName = firstName; }}
+          />
+          <button className="profile__btn--edit" onClick={this.handleClickName}>Изменить</button>
         </div>
         <div>
-
-          Login: {this.props.meFromToken.login}
+          <h4 className="profile__title">Логин</h4>
+          <p className="profile__text">{this.props.meFromToken.login}</p>
         </div>
         <div
           onClick={this.toggleChangePass}
           onKeyPress={this.toggleChangePass}
           role="button"
           tabIndex="0"
+          className="profile__pass--edit"
         >
           Изменить пароль
         </div>
@@ -68,34 +90,15 @@ class Users extends Component {
           <input
             className="ada-form-control__input"
             type="password"
-            placeholder="Пароль"
+            placeholder="Введите пароль"
             ref={(password) => { this.password = password; }}
           />
-          <button onClick={this.handleClickPass}>Изменить</button>
-        </div>
-        <div
-          onClick={this.toggleChangeName}
-          onKeyPress={this.toggleChangeName}
-          role="button"
-          tabIndex="0"
-        >
-          Изменить имя
-        </div>
-        <div className={`${this.state.firstName ? 'open' : 'hide'}`}>
-          <input
-            className="ada-form-control__input"
-            type="text"
-            placeholder="Имя"
-            ref={(firstName) => { this.firstName = firstName; }}
-          />
-          <button onClick={this.handleClickName}>Изменить</button>
+          <button className="profile__btn--edit" onClick={this.handleClickPass}>Изменить</button>
         </div>
       </div>
     );
   }
 }
-
-// meFromToken init string, but must object
 
 Users.propTypes = {
   requestMeFromToken: PropTypes.func.isRequired,

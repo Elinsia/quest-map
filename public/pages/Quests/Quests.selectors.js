@@ -14,7 +14,7 @@ export const getVisibleQuests = (quests, filter) => { // eslint-disable-line con
   }
 };
 
-export const getMapQuests = (quests) => {
+export const getMapQuests = (quests) => { // eslint-disable-line consistent-return
   if (Object.keys(quests).length !== 0) {
     return Object.values(quests);
   }

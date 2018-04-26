@@ -39,7 +39,7 @@ class QuestsItem extends Component {
               role="button"
               tabIndex="0"
             >
-              <CheckMarkIcon iconClass="accept-icon" />
+              <CheckMarkIcon iconClass="ada-icon--accept" />
             </div>
             <div
               onClick={this.handleUpdateActiveQuest}
@@ -47,7 +47,7 @@ class QuestsItem extends Component {
               role="button"
               tabIndex="0"
             >
-              <CrossIcon iconClass="reject-icon" />
+              <CrossIcon iconClass="ada-icon--reject" />
             </div>
           </div>
         </div>
