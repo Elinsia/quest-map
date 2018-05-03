@@ -13,6 +13,7 @@ class Menu extends Component {
             onKeyUp={this.handleKeyUp}
             role="button"
             tabIndex={0}
+            className="btn-icon"
           >
             <CrossIcon iconClass="ada-menu__header--cross" />
           </span>

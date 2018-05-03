@@ -13,10 +13,7 @@ const loginUser = createLogic({
     fetch(`${baseUrl}/users/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-      body: JSON.stringify({
-        login: action.creds.login,
-        password: action.creds.password
-      })
+      body: JSON.stringify(action.creds)
     })
       .then(res => res.json()
         .then(user => ({ user, res })))
@@ -43,11 +40,7 @@ const registrationUser = createLogic({
     fetch(`${baseUrl}/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-      body: JSON.stringify({
-        login: action.creds.login,
-        password: action.creds.password,
-        firstName: action.creds.firstName
-      })
+      body: JSON.stringify(action.creds)
     })
       .then(res => res.json()
         .then(user => ({ user, res })))
