@@ -5,10 +5,10 @@ import CrossIcon from 'Public/shared/Icons/CrossIcon';
 
 class Registration extends Component {
   handleClick() {
-    const login = this.login;
+    const username = this.username;
     const password = this.password;
     const firstName = this.firstName;
-    const creds = { login: login.value.trim(), password: password.value.trim(), firstName: firstName.value.trim() };
+    const creds = { username: username.value.trim(), password: password.value.trim(), firstName: firstName.value.trim() };
     this.props.onRegistrationClick(creds);
   }
 
@@ -19,18 +19,18 @@ class Registration extends Component {
           <div className="ada-modal__content">
             <div className="ada-form__header">
               <h2 className="ada-title">Регистрация</h2>
-              <Link className="icon-close" to="/">
+              <Link className="ada-menu__header--cross icon-close" to="/">
                 <CrossIcon />
               </Link>
             </div>
             <div className="ada-form-control">
-              <label className="ada-form-control__label" htmlFor="login">Логин</label>
+              <label className="ada-form-control__label" htmlFor="username">Логин</label>
               <input
                 className="ada-form-control__input"
                 type="text"
                 placeholder="Логин"
-                id="login"
-                ref={(login) => { this.login = login; }}
+                id="username"
+                ref={(username) => { this.username = username; }}
               />
             </div>
             <div className="ada-form-control">
@@ -53,17 +53,12 @@ class Registration extends Component {
                 ref={(firstName) => { this.firstName = firstName; }}
               />
             </div>
+            <button className="ada-btn ada-btn--fill" onClick={() => this.handleClick()}>
+              Регистрация
+            </button>
             <div className="ada-form__footer">
-              <div className="ada-row">
-                <div className="ada-col-md-6">
-                  <button className="ada-btn ada-btn--blank" onClick={() => this.handleClick()}>
-                    Регистрация
-                  </button>
-                </div>
-                <div className="ada-col-md-6">
-                  Есть аккаунт?
-                  <Link className="header--auth" to="/signin"> Авторизация</Link>
-                </div>
+              <div>
+                <Link className="header--auth" to="/signin">У вас уже есть учётная запись?</Link>
               </div>
             </div>
           </div>

@@ -1,9 +1,6 @@
-const express = require('express');
-const router = express.Router();
-
 const City = require('../models/cities');
 
-router.get('/', function(req, res, next) {
+function getCities(req, res, next) {
   City.find()
     .exec(function(err, cities) {
       if (err) {
@@ -16,9 +13,9 @@ router.get('/', function(req, res, next) {
         data: cities
       });
     });
-});
+}
 
-router.get('/:id', function(req, res, next) {
+function getCity(req, res, next) {
   City.findById(req.params.id)
     .exec(function (err, city) {
       if (err) {
@@ -31,9 +28,9 @@ router.get('/:id', function(req, res, next) {
         data: city
       });
     });
-});
+}
 
-router.post('/', function(req, res, next) {
+function createCity(req, res, next) {
   let city = new City({
     title: req.body.title
   });
@@ -48,9 +45,9 @@ router.post('/', function(req, res, next) {
       data: result
     });
   });
-});
+}
 
-router.patch('/:id', function(req, res, next) {
+function patchCity(req, res, next) {
   City.findById(req.params.id, function(err, city) {
     if (err) {
       return res.status(500).json({
@@ -77,9 +74,9 @@ router.patch('/:id', function(req, res, next) {
       });
     });
   });
-});
+}
 
-router.delete('/:id', function(req, res, next) {
+function deleteCity(req, res, next) {
   City.findById(req.params.id, function (err, city) {
     if (err) {
       return res.status(500).json({
@@ -105,6 +102,12 @@ router.delete('/:id', function(req, res, next) {
       });
     });
   });
-});
+}
 
-module.exports = router;
+module.exports = {
+  getCities: getCities,
+  getCity: getCity,
+  createCity: createCity,
+  patchCity: patchCity,
+  deleteCity: deleteCity
+};

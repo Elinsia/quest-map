@@ -14,6 +14,7 @@ class Header extends Component {
           onKeyUp={this.handleKeyUp}
           role="button"
           tabIndex={0}
+          className="btn-icon"
         >
           <BurgerIcon iconClass="ada-header__menu" />
         </span>

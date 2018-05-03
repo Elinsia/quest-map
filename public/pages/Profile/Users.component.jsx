@@ -50,45 +50,41 @@ class Users extends Component {
     return (
       <div className="profile">
         <div>
-          <h4 className="profile__title">Имя</h4>
-          <p className="profile__text">
-            {this.props.meFromToken.firstName}
-            <span
-              onClick={this.toggleChangeName}
-              onKeyPress={this.toggleChangeName}
-              role="button"
-              tabIndex="0"
-              className="profile--edit"
-            >
-              Редактировать
-            </span>
-          </p>
+          <h4 className="profile__title">Имя: {this.props.meFromToken.firstName}</h4>
+        </div>
+        <div>
+          <h4 className="profile__title">Логин: {this.props.meFromToken.username}</h4>
+        </div>
+        <div
+          className="profile--edit"
+          onClick={this.toggleChangeName}
+          onKeyPress={this.toggleChangeName}
+          role="button"
+          tabIndex="0"
+        >
+          Изменить имя
         </div>
         <div className={`${this.state.firstName ? 'open' : 'hide'}`}>
           <input
-            className="ada-form-control__input"
+            className="ada-form-control__input profile-form-control__input"
             type="text"
             placeholder="Введите имя"
             ref={(firstName) => { this.firstName = firstName; }}
           />
           <button className="profile__btn--edit" onClick={this.handleClickName}>Изменить</button>
         </div>
-        <div>
-          <h4 className="profile__title">Логин</h4>
-          <p className="profile__text">{this.props.meFromToken.login}</p>
-        </div>
         <div
           onClick={this.toggleChangePass}
           onKeyPress={this.toggleChangePass}
           role="button"
           tabIndex="0"
-          className="profile__pass--edit"
+          className="profile--edit"
         >
           Изменить пароль
         </div>
         <div className={`${this.state.pass ? 'open' : 'hide'}`}>
           <input
-            className="ada-form-control__input"
+            className="ada-form-control__input profile-form-control__input"
             type="password"
             placeholder="Введите пароль"
             ref={(password) => { this.password = password; }}
@@ -104,13 +100,13 @@ Users.propTypes = {
   requestMeFromToken: PropTypes.func.isRequired,
   meFromToken: PropTypes.object,
   firstName: PropTypes.string,
-  login: PropTypes.string,
+  username: PropTypes.string,
   onChangeClick: PropTypes.func.isRequired
 };
 Users.defaultProps = {
   meFromToken: {},
   firstName: '',
-  login: ''
+  username: ''
 };
 
 export default Users;

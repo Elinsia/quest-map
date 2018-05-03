@@ -5,9 +5,9 @@ import CrossIcon from 'Public/shared/Icons/CrossIcon';
 
 class Login extends Component {
   handleClick() {
-    const login = this.login;
+    const username = this.username;
     const password = this.password;
-    const creds = { login: login.value.trim(), password: password.value.trim() };
+    const creds = { username: username.value.trim(), password: password.value.trim() };
     this.props.onLoginClick(creds);
   }
 
@@ -18,18 +18,18 @@ class Login extends Component {
           <div className="ada-modal__content">
             <div className="ada-form__header">
               <h2 className="ada-title">Авторизация</h2>
-              <Link className="icon-close" to="/">
+              <Link className="ada-menu__header--cross icon-close" to="/">
                 <CrossIcon />
               </Link>
             </div>
             <div className="ada-form-control">
-              <label className="ada-form-control__label" htmlFor="login">Логин</label>
+              <label className="ada-form-control__label" htmlFor="username">Логин</label>
               <input
                 className="ada-form-control__input"
                 type="text"
                 placeholder="Логин"
-                id="login"
-                ref={(login) => { this.login = login; }}
+                id="username"
+                ref={(username) => { this.username = username; }}
               />
             </div>
             <div className="ada-form-control">
@@ -42,16 +42,11 @@ class Login extends Component {
                 ref={(password) => { this.password = password; }}
               />
             </div>
+            <div>
+              <button className="ada-btn ada-btn--fill" onClick={() => this.handleClick()}>Войти</button>
+            </div>
             <div className="ada-form__footer">
-              <div className="ada-row">
-                <div className="ada-col-md-6">
-                  <button className="ada-btn ada-btn--blank" onClick={() => this.handleClick()}>Войти</button>
-                </div>
-                <div className="ada-col-md-6">
-                  Нет аккаунта?
-                  <Link className="header--auth" to="/signup"> Регистрация</Link>
-                </div>
-              </div>
+              <Link className="header--auth" to="/signup">У вас ещё нет учётной записи?</Link>
             </div>
           </div>
         </div>

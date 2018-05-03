@@ -1,14 +1,12 @@
-const express = require('express');
-const router = express.Router();
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/users');
 const City = require('../models/cities');
 const Quest = require('../models/quests');
 
-router.get('/', function(req, res, next) {
+function getQuests(req, res, next) {
   Quest.find()
-    .populate('users', 'login')
+    .populate('users', 'username')
     .exec(function(err, quests) {
       if (err) {
         return res.status(500).json({
@@ -20,11 +18,11 @@ router.get('/', function(req, res, next) {
         data: quests
       });
     });
-});
+}
 
-router.get('/:id', function(req, res, next) {
+function getQuest(req, res, next) {
   Quest.findById(req.params.id)
-    .populate('users', 'login')
+    .populate('users', 'username')
     .exec(function (err, quest) {
       if (err) {
         return res.status(500).json({
@@ -36,21 +34,9 @@ router.get('/:id', function(req, res, next) {
         data: quest
       });
     });
-});
+}
 
-router.use('/', function(req, res, next) {
-  jwt.verify(req.headers['x-access-token'], 'secret', function (err, decoded) {
-    if (err) {
-      return res.status(401).json({
-        title: 'Not Authenticated',
-        error: err
-      });
-    }
-    next();
-  });
-});
-
-router.post('/', function(req, res, next) {
+function createQuest(req, res, next) {
   let quest = new Quest({
     title: req.body.title,
     point: req.body.point,
@@ -83,69 +69,9 @@ router.post('/', function(req, res, next) {
       });
     });
   });
-});
+}
 
-// router.patch('/:id', function(req, res, next) {
-//   Quest.findById(req.params.id, function(err, quest) {
-//     if (err) {
-//       return res.status(500).json({
-//         title: 'An error occurred',
-//         error: err
-//       });
-//     }
-//     if (!quest) {
-//       return res.status(500).json({
-//         title: 'No Quest Found!',
-//         error: {quest: 'Quest not found'}
-//       });
-//     }
-//     quest.active = req.body.active;
-//     if (quest.active === true){
-//       quest.complete = req.body.complete;
-//       if (quest.complete === true) {
-//         quest.save(function(err, result) {
-//           if (err) {
-//             return res.status(500).json({
-//               title: 'An error occurred',
-//               error: err
-//             });
-//           }
-//           res.status(200).json({
-//             data: result
-//           });
-//         });
-//       }
-//       else {
-//         quest.save(function(err, result) {
-//           if (err) {
-//             return res.status(500).json({
-//               title: 'An error occurred',
-//               error: err
-//             });
-//           }
-//           res.status(200).json({
-//             data: result
-//           });
-//         });
-//       }
-//     }
-//     else {
-//       quest.save(function(err, result) {
-//         if (err) {
-//           return res.status(500).json({
-//             title: 'An error occurred',
-//             error: err
-//           });
-//         }
-//         res.status(200).json({
-//           data: result
-//         });
-//       });
-//     }
-//   });
-// });
-
-router.patch('/:id', function(req, res, next) {
+function patchQuest(req, res, next) {
   let decoded = jwt.decode(req.headers['x-access-token']);
   User.findById(decoded.user._id, function (err, user) {
     if (err) {
@@ -181,6 +107,7 @@ router.patch('/:id', function(req, res, next) {
             }
             user.questsActive.push(result);
             user.questsComplete.push(result);
+            user.score += result.score;
             user.save();
             res.status(200).json({
               data: result
@@ -222,43 +149,9 @@ router.patch('/:id', function(req, res, next) {
       }
     });
   });
-});
+}
 
-// router.patch('/admin/:id', function(req, res, next) {
-//   Quest.findById(req.params.id, function(err, quest) {
-//     if (err) {
-//       return res.status(500).json({
-//         title: 'An error occurred',
-//         error: err
-//       });
-//     }
-//     if (!quest) {
-//       return res.status(500).json({
-//         title: 'No Quest Found!',
-//         error: {quest: 'Quest not found'}
-//       });
-//     }
-//     quest.title = req.body.title;
-//     quest.point = req.body.point;
-//     quest.type = req.body.type;
-//     quest.shortDescription = req.body.shortDescription;
-//     quest.fullDescription = req.body.fullDescription;
-//     quest.score = req.body.score;
-//     quest.save(function(err, result) {
-//       if (err) {
-//         return res.status(500).json({
-//           title: 'An error occurred',
-//           error: err
-//         });
-//       }
-//       res.status(200).json({
-//         data: result
-//       });
-//     });
-//   });
-// });
-
-router.delete('/:id', function(req, res, next) {
+function deleteQuest(req, res, next) {
   Quest.findById(req.params.id, function (err, quest) {
     if (err) {
       return res.status(500).json({
@@ -284,6 +177,12 @@ router.delete('/:id', function(req, res, next) {
       });
     });
   });
-});
+}
 
-module.exports = router;
+module.exports = {
+  getQuests: getQuests,
+  getQuest: getQuest,
+  createQuest: createQuest,
+  patchQuest: patchQuest,
+  deleteQuest: deleteQuest
+};
