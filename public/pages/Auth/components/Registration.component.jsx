@@ -8,7 +8,12 @@ class Registration extends Component {
     const username = this.username;
     const password = this.password;
     const firstName = this.firstName;
-    const creds = { username: username.value.trim(), password: password.value.trim(), firstName: firstName.value.trim() };
+    const creds = {
+      username: username.value.trim(),
+      password: password.value.trim(),
+      firstName: firstName.value.trim()
+    };
+
     this.props.onRegistrationClick(creds);
   }
 
