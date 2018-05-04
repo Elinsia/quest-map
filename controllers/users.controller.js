@@ -42,13 +42,18 @@ function getRating(req, res, next) {
           error: err
         });
       }
-      let top = users.sort((curr, next) => next.score - curr.score)
+      let topUsers = users.sort((curr, next) => next.score - curr.score)
         .slice(0, 10);
-      let data = top.map(user => ({
-        username: user.username,
-        firstName: user.firstName,
-        score: user.score
-      }));
+      let data = topUsers.map(user => {
+        user.place = topUsers.findIndex(x => x.username === user.username) + 1;
+        return ({
+          id: user._id,
+          username: user.username,
+          firstName: user.firstName,
+          score: user.score,
+          place: user.place
+        })
+      });
       res.status(200).json({
         data
       });

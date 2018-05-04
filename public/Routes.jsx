@@ -7,6 +7,7 @@ import Map from './pages/GoogleMaps/components/Map/index';
 import Login from './pages/Auth/components/Login.container';
 import Registration from './pages/Auth/components/Registration.container';
 import Users from './pages/Profile/Users.container';
+import Rating from './pages/Rating/Rating.container';
 
 import { isAuth } from './services/authManager';
 
@@ -17,6 +18,7 @@ class Routes extends Component {
         <Route exact path="/map" component={Map} />
         <PrivateRoute path="/quests" component={ActiveQuest} />
         <PrivateRoute path="/profile" component={Users} />
+        <Route path="/rating" component={Rating} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={Registration} />
       </Switch>
