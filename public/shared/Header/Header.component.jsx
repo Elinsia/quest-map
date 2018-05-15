@@ -20,11 +20,11 @@ class Header extends Component {
         </span>
 
         {!isAuthenticated &&
-          <Link className="ada-header__text" to="/signin">Sign in</Link>
+          <Link className="ada-header__text" to="/signin">Войти</Link>
         }
 
         {isAuthenticated &&
-          <Link className="ada-header__text" to="/signin" onClick={() => onLogoutClick()}>Logout</Link>
+          <Link className="ada-header__text" to="/signin" onClick={() => onLogoutClick()}>Выход</Link>
         }
 
       </div>

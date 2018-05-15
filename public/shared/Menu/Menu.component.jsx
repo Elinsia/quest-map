@@ -20,19 +20,19 @@ class Menu extends Component {
         </div>
         <ul className="ada-menu__container">
           <li className="ada-menu__item">
-            <Link className="ada-menu__text" to="/profile">Profile</Link>
+            <Link className="ada-menu__text" to="/profile">Профиль</Link>
           </li>
           <li className="ada-menu__item">
-            <Link className="ada-menu__text" to="/map">Map</Link>
+            <Link className="ada-menu__text" to="/map">Карта</Link>
           </li>
           <li className="ada-menu__item">
-            <Link className="ada-menu__text" to="/quests">Quests</Link>
+            <Link className="ada-menu__text" to="/quests">Квесты</Link>
           </li>
           <li className="ada-menu__item">
-            <Link className="ada-menu__text" to="/achievements">Achievements</Link>
+            <Link className="ada-menu__text" to="/achievements">Достижения</Link>
           </li>
           <li className="ada-menu__item">
-            <Link className="ada-menu__text" to="/rating">Rating</Link>
+            <Link className="ada-menu__text" to="/rating">Рейтинг</Link>
           </li>
         </ul>
       </div>
