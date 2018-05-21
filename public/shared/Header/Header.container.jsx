@@ -3,11 +3,6 @@ import { receiveLogout, requestLogout } from 'Public/pages/Auth/Auth.actions';
 import Header from './Header.component';
 import { openMenu } from '../Menu/Menu.actions';
 
-const mapStateToProps = state => ({
-  openMenu: state.menu,
-  isAuthenticated: state.auth.auth.isAuthenticated
-});
-
 const mapDispatchToProps = dispatch => ({
   showMenu: () => {
     dispatch(openMenu());
@@ -19,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

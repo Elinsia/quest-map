@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic';
+import { ALERT_SUCCESS, ALERT_FAILURE } from 'Public/shared/Alert/Alert.constants';
 import {
   GET_CURRENT_QUEST, GET_CURRENT_QUEST_FAILURE, GET_CURRENT_QUEST_SUCCESS,
   SHOW_QUESTS, SHOW_QUESTS_FAILURE, SHOW_QUESTS_SUCCESS,
@@ -79,12 +80,18 @@ const updateQuest = createLogic({
           type: UPDATE_QUESTS_SUCCESS,
           payload: res
         });
+        dispatch({
+          type: ALERT_SUCCESS
+        });
         done();
       })
       .catch((res) => {
         dispatch({
           type: UPDATE_QUESTS_FAILURE,
           payload: res
+        });
+        dispatch({
+          type: ALERT_FAILURE
         });
         done();
       });

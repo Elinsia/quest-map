@@ -8,6 +8,7 @@ import Login from './pages/Auth/components/Login.container';
 import Registration from './pages/Auth/components/Registration.container';
 import Users from './pages/Profile/Users.container';
 import Rating from './pages/Rating/Rating.container';
+import Achievements from './pages/Achievements/Achievements';
 
 import { isAuth } from './services/authManager';
 
@@ -19,6 +20,7 @@ class Routes extends Component {
         <PrivateRoute path="/quests" component={ActiveQuest} />
         <PrivateRoute path="/profile" component={Users} />
         <Route path="/rating" component={Rating} />
+        <Route path="/achievements" component={Achievements} />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={Registration} />
       </Switch>

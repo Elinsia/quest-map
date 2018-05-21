@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
 import QuestsItem from './QuestsItem.container';
 
 class QuestsList extends Component {
   componentWillMount() {
     this.props.showQuests();
+  }
+
+  componentDidUpdate() {
+    // this.props.alertStatus ? this.props.alert.success('Success') : console.log('no')
+    // alert(this.props.alertStatus);
   }
 
   render() {
@@ -31,4 +37,4 @@ QuestsList.defaultProps = {
   activeQuests: []
 };
 
-export default QuestsList;
+export default withAlert(QuestsList);

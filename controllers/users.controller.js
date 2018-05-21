@@ -44,8 +44,8 @@ function getRating(req, res, next) {
       }
       let topUsers = users.sort((curr, next) => next.score - curr.score)
         .slice(0, 10);
-      let data = topUsers.map(user => {
-        user.place = topUsers.findIndex(x => x.username === user.username) + 1;
+      let data = topUsers.map((user, index) => {
+        user.place = index + 1;
         return ({
           id: user._id,
           username: user.username,

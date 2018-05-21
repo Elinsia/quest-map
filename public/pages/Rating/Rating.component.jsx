@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { isAuth } from '../../services/authManager';
 
 class Rating extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.requestRating();
 
     if (isAuth()) {
