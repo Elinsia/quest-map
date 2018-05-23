@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { RATING_SUCCESS, RATING_FAILURE, CURR_PLACE_SUCCESS, CURR_PLACE_FAILURE } from './Rating.constants';
+import { RATING_SUCCESS, RATING_FAILURE, CURRENT_PLACE_SUCCESS, CURRENT_PLACE_FAILURE } from './Rating.constants';
 
 function rating(state = {}, action) {
   switch (action.type) {
@@ -12,11 +12,11 @@ function rating(state = {}, action) {
   }
 }
 
-function currPlace(state = {}, action) {
+function currentPlace(state = {}, action) {
   switch (action.type) {
-    case CURR_PLACE_SUCCESS:
+    case CURRENT_PLACE_SUCCESS:
       return action.data;
-    case CURR_PLACE_FAILURE:
+    case CURRENT_PLACE_FAILURE:
       return { ...state, errorMessage: action.message };
     default:
       return state;
@@ -24,7 +24,7 @@ function currPlace(state = {}, action) {
 }
 
 const ratingReducer = combineReducers({
-  rating, currPlace
+  rating, currentPlace
 });
 
 export default ratingReducer;

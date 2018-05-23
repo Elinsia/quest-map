@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import camera from '../../assets/camera.png';
+import map from '../../assets/map.png';
 
 class AchievementsList extends Component {
   componentWillMount() {
@@ -13,7 +15,7 @@ class AchievementsList extends Component {
           {this.props.quests && this.props.quests.map(quest => (
             <tr key={quest._id} className={`ada-table__cell--content ${quest.complete ? 'complete' : ''}`}>
               <th className="ada-table__cell ada-table__cell--width200">
-                <img src="https://dummyimage.com/180x100/000/fff" alt="" />
+                <img className="ada-table__cell--image" src={`${quest.type === 'img' ? camera : map}`} alt="" />
               </th>
               <td className="ada-table__cell ada-table__cell--width900">
                 <h1 className="ada-table__cell--text">{quest.title}</h1>

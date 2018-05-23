@@ -1,6 +1,6 @@
 import {
   RATING_REQUEST, RATING_SUCCESS, RATING_FAILURE,
-  CURR_PLACE_REQUEST, CURR_PLACE_SUCCESS, CURR_PLACE_FAILURE
+  CURRENT_PLACE_REQUEST, CURRENT_PLACE_SUCCESS, CURRENT_PLACE_FAILURE
 } from './Rating.constants';
 
 export const requestRating = () => ({ type: RATING_REQUEST });
@@ -19,18 +19,18 @@ export function ratingError(message) {
   };
 }
 
-export const requestCurrPlace = () => ({ type: CURR_PLACE_REQUEST });
+export const requestCurrentPlace = () => ({ type: CURRENT_PLACE_REQUEST });
 
-export function receiveCurrPlace(data) {
+export function receiveCurrentPlace(data) {
   return {
-    type: CURR_PLACE_SUCCESS,
+    type: CURRENT_PLACE_SUCCESS,
     data
   };
 }
 
-export function currPlaceError(message) {
+export function currentPlaceError(message) {
   return {
-    type: CURR_PLACE_FAILURE,
+    type: CURRENT_PLACE_FAILURE,
     message
   };
 }

@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic';
-import { RATING_REQUEST, CURR_PLACE_REQUEST } from './Rating.constants';
-import { receiveRating, ratingError, receiveCurrPlace, currPlaceError } from './Rating.actions';
+import { RATING_REQUEST, CURRENT_PLACE_REQUEST } from './Rating.constants';
+import { receiveRating, ratingError, receiveCurrentPlace, currentPlaceError } from './Rating.actions';
 
 const baseUrl = process.env.API_URL;
 
@@ -23,13 +23,14 @@ const rating = createLogic({
         done();
       })
       .catch((err) => {
-        dispatch(ratingError(err));
+        dispatch(ratingError(err.error));
+        done();
       });
   }
 });
 
-const currPlace = createLogic({
-  type: CURR_PLACE_REQUEST,
+const currentPlace = createLogic({
+  type: CURRENT_PLACE_REQUEST,
   latest: true,
 
   process(_, dispatch, done) {
@@ -43,13 +44,14 @@ const currPlace = createLogic({
         if (!res.ok) {
           return Promise.reject(data);
         }
-        dispatch(receiveCurrPlace(data));
+        dispatch(receiveCurrentPlace(data));
         done();
       })
       .catch((err) => {
-        dispatch(currPlaceError(err));
+        dispatch(currentPlaceError(err.error));
+        done();
       });
   }
 });
 
-export default [rating, currPlace];
+export default [rating, currentPlace];

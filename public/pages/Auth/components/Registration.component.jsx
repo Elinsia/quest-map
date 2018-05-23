@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 import CrossIcon from 'Public/shared/Icons/CrossIcon';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 
 class Registration extends Component {
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (this.props.alertVisible !== nextProps.alertVisible && nextProps.alertVisible === true) {
+      if (nextProps.alertStyle === StyleAlert.FAILURE) {
+        this.props.alert.error(nextProps.alertStatus);
+        this.props.resetAlert();
+      }
+    }
+  }
+
   handleClick() {
     const username = this.username;
     const password = this.password;
@@ -74,7 +85,10 @@ class Registration extends Component {
 }
 
 Registration.propTypes = {
-  onRegistrationClick: PropTypes.func.isRequired
+  onRegistrationClick: PropTypes.func.isRequired,
+  alertVisible: PropTypes.bool.isRequired,
+  alert: PropTypes.object.isRequired,
+  resetAlert: PropTypes.func.isRequired
 };
 
-export default Registration;
+export default withAlert(Registration);

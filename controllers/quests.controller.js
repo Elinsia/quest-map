@@ -77,7 +77,7 @@ function patchQuest(req, res, next) {
     if (err) {
       return res.status(500).json({
         title: 'Not Authenticated',
-        error: { message: 'Users do not match' }
+        error: 'Users do not match'
       });
     }
     Quest.findById(req.params.id, function(err, quest) {
@@ -90,7 +90,7 @@ function patchQuest(req, res, next) {
       if (!quest) {
         return res.status(500).json({
           title: 'No Quest Found!',
-          error: {quest: 'Quest not found'}
+          error: 'Quest not found'
         });
       }
       quest.active = req.body.active;

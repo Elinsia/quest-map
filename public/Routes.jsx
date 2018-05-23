@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ActiveQuest from './pages/Quests/components/Quests/Quests';
+import ActiveQuest from './pages/Quests/components/Quests/Quests.container';
 import Map from './pages/GoogleMaps/components/Map/index';
 import Login from './pages/Auth/components/Login.container';
 import Registration from './pages/Auth/components/Registration.container';
 import Users from './pages/Profile/Users.container';
-import Rating from './pages/Rating/Rating.container';
+import Rating from './pages/Rating/components/Rating.container';
 import Achievements from './pages/Achievements/Achievements';
 
 import { isAuth } from './services/authManager';

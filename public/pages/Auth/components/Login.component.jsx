@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { withAlert } from 'react-alert';
 import CrossIcon from 'Public/shared/Icons/CrossIcon';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 
 class Login extends Component {
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (this.props.alertVisible !== nextProps.alertVisible && nextProps.alertVisible === true) {
+      if (nextProps.alertStyle === StyleAlert.FAILURE) {
+        this.props.alert.error(nextProps.alertStatus);
+        this.props.resetAlert();
+      }
+    }
+  }
+
   handleClick() {
     const username = this.username;
     const password = this.password;
@@ -56,7 +67,10 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  onLoginClick: PropTypes.func.isRequired
+  onLoginClick: PropTypes.func.isRequired,
+  alertVisible: PropTypes.bool.isRequired,
+  alert: PropTypes.object.isRequired,
+  resetAlert: PropTypes.func.isRequired
 };
 
-export default Login;
+export default withAlert(Login);

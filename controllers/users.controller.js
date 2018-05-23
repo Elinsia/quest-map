@@ -176,7 +176,7 @@ function patchUser(req, res, next) {
       if (!user) {
         return res.status(500).json({
           title: 'No User Found!',
-          error: {user: 'User not found'}
+          error: 'User not found'
         });
       }
       if (req.body.password) {

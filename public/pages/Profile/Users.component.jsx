@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 
 class Users extends Component {
   constructor() {
@@ -18,6 +20,18 @@ class Users extends Component {
 
   componentWillMount() {
     this.props.requestMeFromToken();
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (this.props.alertVisible !== nextProps.alertVisible && nextProps.alertVisible === true) {
+      if (nextProps.alertStyle === StyleAlert.SUCCESS) {
+        this.props.alert.success(nextProps.alertStatus);
+        this.props.resetAlert();
+      } else {
+        this.props.alert.error(nextProps.alertStatus);
+        this.props.resetAlert();
+      }
+    }
   }
 
   toggleChangePass() {
@@ -101,7 +115,10 @@ Users.propTypes = {
   meFromToken: PropTypes.object,
   firstName: PropTypes.string,
   username: PropTypes.string,
-  onChangeClick: PropTypes.func.isRequired
+  onChangeClick: PropTypes.func.isRequired,
+  alertVisible: PropTypes.bool.isRequired,
+  alert: PropTypes.object.isRequired,
+  resetAlert: PropTypes.func.isRequired
 };
 Users.defaultProps = {
   meFromToken: {},
@@ -109,4 +126,4 @@ Users.defaultProps = {
   username: ''
 };
 
-export default Users;
+export default withAlert(Users);

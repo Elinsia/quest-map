@@ -8,8 +8,7 @@ const mapStateToProps = (state, props) => ({
   activeQuests: getVisibleQuests(
     getCityQuests(props.cityQuests, state.quests.questsList),
     state.quests.visibilityFilter
-  ),
-  alertStatus: state.alert
+  )
 });
 
 const mapDispatchToProps = dispatch => ({

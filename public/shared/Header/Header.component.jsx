@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { isAuth } from 'Public/services/authManager';
 import BurgerIcon from '../Icons/BurgerIcon';
 
 class Header extends Component {
   render() {
-    const { showMenu, onLogoutClick } = this.props;
+    const { showMenu, isAuthenticated, onLogoutClick } = this.props;
 
     return (
       <div className="ada-header">
@@ -20,11 +19,11 @@ class Header extends Component {
           <BurgerIcon iconClass="ada-header__menu" />
         </span>
 
-        {!isAuth() &&
+        {!isAuthenticated &&
           <Link className="ada-header__text" to="/signin">Войти</Link>
         }
 
-        {isAuth() &&
+        {isAuthenticated &&
           <Link className="ada-header__text" to="/signin" onClick={() => onLogoutClick()}>Выход</Link>
         }
 
@@ -35,6 +34,8 @@ class Header extends Component {
 
 Header.propTypes = {
   showMenu: PropTypes.func.isRequired,
-  onLogoutClick: PropTypes.func.isRequired
+  onLogoutClick: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
+
 export default Header;
