@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { resetAlert } from 'Public/shared/Alert/Alert.actions';
-import Registration from './Registration.component';
-import { requestRegistration } from '../Auth.actions';
+import ActiveQuest from './Quests.component';
 
 const mapStateToProps = state => ({
   alertStatus: state.alert.message,
@@ -10,12 +9,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRegistrationClick: (creds) => {
-    dispatch(requestRegistration(creds));
-  },
   resetAlert: () => {
     dispatch(resetAlert());
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveQuest);

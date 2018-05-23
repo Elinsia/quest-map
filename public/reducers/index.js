@@ -6,6 +6,8 @@ import MapReducer from '../pages/GoogleMaps/Map.reducer';
 import MenuReducer from '../shared/Menu/Menu.reducer';
 import authReducer from '../pages/Auth/Auth.reducer';
 import userReducer from '../pages/Profile/Users.reducer';
+import ratingReducer from '../pages/Rating/Rating.reducer';
+import alertReducer from '../shared/Alert/Alert.reducer';
 
 const rootReducer = combineReducers({
   cities: cityReducer,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
   map: MapReducer,
   menu: MenuReducer,
   auth: authReducer,
+  rating: ratingReducer,
+  alert: alertReducer,
   router: routerReducer
 });
 

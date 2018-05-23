@@ -23,7 +23,7 @@ const getActiveCities = createLogic({
       .catch((res) => {
         dispatch({
           type: SHOW_ACTIVE_CITIES_FAILURE,
-          payload: res
+          payload: res.error
         });
         done();
       });
