@@ -1,5 +1,7 @@
 import { createLogic } from 'redux-logic';
 import { push } from 'react-router-redux';
+import { setVisibilityAlert } from 'Public/shared/Alert/Alert.actions';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 import { LOGIN_REQUEST, REGISTRATION_REQUEST } from './Auth.constants';
 import { loginError, receiveLogin, registrationError, receiveRegistration } from './Auth.actions';
 
@@ -13,10 +15,7 @@ const loginUser = createLogic({
     fetch(`${baseUrl}/users/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-      body: JSON.stringify({
-        login: action.creds.login,
-        password: action.creds.password
-      })
+      body: JSON.stringify(action.creds)
     })
       .then(res => res.json()
         .then(user => ({ user, res })))
@@ -30,7 +29,9 @@ const loginUser = createLogic({
         done();
       })
       .catch((err) => {
-        dispatch(loginError(err));
+        dispatch(loginError(err.error.message));
+        dispatch(setVisibilityAlert(StyleAlert.FAILURE, err.error.message));
+        done();
       });
   }
 });
@@ -43,11 +44,7 @@ const registrationUser = createLogic({
     fetch(`${baseUrl}/users/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-      body: JSON.stringify({
-        login: action.creds.login,
-        password: action.creds.password,
-        firstName: action.creds.firstName
-      })
+      body: JSON.stringify(action.creds)
     })
       .then(res => res.json()
         .then(user => ({ user, res })))
@@ -60,7 +57,9 @@ const registrationUser = createLogic({
         done();
       })
       .catch((err) => {
-        dispatch(registrationError(err));
+        dispatch(registrationError(err.error));
+        dispatch(setVisibilityAlert(StyleAlert.FAILURE, err.error));
+        done();
       });
   }
 });

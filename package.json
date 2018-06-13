@@ -8,7 +8,7 @@
     "lint": "eslint --ext .jsx,.js public/",
     "build": "webpack",
     "all": "npm-run-all --parallel server start",
-    "server": "node ./bin/www",
+    "server": "nodemon ./bin/www",
     "start": "webpack-dev-server --open --watch"
   },
   "repository": {
@@ -65,10 +65,13 @@
     "node-js-marker-clusterer": "^1.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
+    "react-alert": "^4.0.4",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-transition-group": "^2.3.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-logic": "^0.12.3"

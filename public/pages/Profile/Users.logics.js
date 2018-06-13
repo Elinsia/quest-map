@@ -1,4 +1,6 @@
 import { createLogic } from 'redux-logic';
+import { setVisibilityAlert } from 'Public/shared/Alert/Alert.actions';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 import { ME_FROM_TOKEN_REQUEST, UPDATE_USERS_REQUEST } from './Users.constants';
 import { receiveMeFromToken, meFromTokenError, receiveUpdateUsers, updateUsersError } from './Users.actions';
 
@@ -23,7 +25,8 @@ const meFromToken = createLogic({
         done();
       })
       .catch((err) => {
-        dispatch(meFromTokenError(err));
+        dispatch(meFromTokenError(err.error));
+        done();
       });
   }
 });
@@ -45,10 +48,13 @@ const updateUser = createLogic({
           return Promise.reject(user);
         }
         dispatch(receiveUpdateUsers(user));
+        dispatch(setVisibilityAlert(StyleAlert.SUCCESS, 'Успех!'));
         done();
       })
       .catch((err) => {
-        dispatch(updateUsersError(err));
+        dispatch(updateUsersError(err.error));
+        dispatch(setVisibilityAlert(StyleAlert.FAILURE, err.error));
+        done();
       });
   }
 });

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withAlert } from 'react-alert';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 
 class Users extends Component {
   constructor() {
@@ -18,6 +20,18 @@ class Users extends Component {
 
   componentWillMount() {
     this.props.requestMeFromToken();
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) { // eslint-disable-line camelcase
+    if (this.props.alertVisible !== nextProps.alertVisible && nextProps.alertVisible === true) {
+      if (nextProps.alertStyle === StyleAlert.SUCCESS) {
+        this.props.alert.success(nextProps.alertStatus);
+        this.props.resetAlert();
+      } else {
+        this.props.alert.error(nextProps.alertStatus);
+        this.props.resetAlert();
+      }
+    }
   }
 
   toggleChangePass() {
@@ -48,32 +62,15 @@ class Users extends Component {
 
   render() {
     return (
-      <div>
+      <div className="profile">
         <div>
-          FirstName: {this.props.meFromToken.firstName}
+          <h4 className="profile__title">Имя: {this.props.meFromToken.firstName}</h4>
         </div>
         <div>
-
-          Login: {this.props.meFromToken.login}
+          <h4 className="profile__title">Логин: {this.props.meFromToken.username}</h4>
         </div>
         <div
-          onClick={this.toggleChangePass}
-          onKeyPress={this.toggleChangePass}
-          role="button"
-          tabIndex="0"
-        >
-          Изменить пароль
-        </div>
-        <div className={`${this.state.pass ? 'open' : 'hide'}`}>
-          <input
-            className="ada-form-control__input"
-            type="password"
-            placeholder="Пароль"
-            ref={(password) => { this.password = password; }}
-          />
-          <button onClick={this.handleClickPass}>Изменить</button>
-        </div>
-        <div
+          className="profile--edit"
           onClick={this.toggleChangeName}
           onKeyPress={this.toggleChangeName}
           role="button"
@@ -83,31 +80,50 @@ class Users extends Component {
         </div>
         <div className={`${this.state.firstName ? 'open' : 'hide'}`}>
           <input
-            className="ada-form-control__input"
+            className="ada-form-control__input profile-form-control__input"
             type="text"
-            placeholder="Имя"
+            placeholder="Введите имя"
             ref={(firstName) => { this.firstName = firstName; }}
           />
-          <button onClick={this.handleClickName}>Изменить</button>
+          <button className="profile__btn--edit" onClick={this.handleClickName}>Изменить</button>
+        </div>
+        <div
+          onClick={this.toggleChangePass}
+          onKeyPress={this.toggleChangePass}
+          role="button"
+          tabIndex="0"
+          className="profile--edit"
+        >
+          Изменить пароль
+        </div>
+        <div className={`${this.state.pass ? 'open' : 'hide'}`}>
+          <input
+            className="ada-form-control__input profile-form-control__input"
+            type="password"
+            placeholder="Введите пароль"
+            ref={(password) => { this.password = password; }}
+          />
+          <button className="profile__btn--edit" onClick={this.handleClickPass}>Изменить</button>
         </div>
       </div>
     );
   }
 }
 
-// meFromToken init string, but must object
-
 Users.propTypes = {
   requestMeFromToken: PropTypes.func.isRequired,
   meFromToken: PropTypes.object,
   firstName: PropTypes.string,
-  login: PropTypes.string,
-  onChangeClick: PropTypes.func.isRequired
+  username: PropTypes.string,
+  onChangeClick: PropTypes.func.isRequired,
+  alertVisible: PropTypes.bool.isRequired,
+  alert: PropTypes.object.isRequired,
+  resetAlert: PropTypes.func.isRequired
 };
 Users.defaultProps = {
   meFromToken: {},
   firstName: '',
-  login: ''
+  username: ''
 };
 
-export default Users;
+export default withAlert(Users);

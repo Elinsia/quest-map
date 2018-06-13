@@ -1,4 +1,6 @@
 import { createLogic } from 'redux-logic';
+import { setVisibilityAlert } from 'Public/shared/Alert/Alert.actions';
+import { StyleAlert } from 'Public/shared/Alert/Alert.constants';
 import {
   GET_CURRENT_QUEST, GET_CURRENT_QUEST_FAILURE, GET_CURRENT_QUEST_SUCCESS,
   SHOW_QUESTS, SHOW_QUESTS_FAILURE, SHOW_QUESTS_SUCCESS,
@@ -27,7 +29,7 @@ const getQuests = createLogic({
       .catch((res) => {
         dispatch({
           type: SHOW_QUESTS_FAILURE,
-          payload: res
+          payload: res.error
         });
         done();
       });
@@ -54,7 +56,7 @@ const showCurrentQuest = createLogic({
       .catch((res) => {
         dispatch({
           type: GET_CURRENT_QUEST_FAILURE,
-          payload: res
+          payload: res.error
         });
         done();
       });
@@ -79,13 +81,15 @@ const updateQuest = createLogic({
           type: UPDATE_QUESTS_SUCCESS,
           payload: res
         });
+        dispatch(setVisibilityAlert(StyleAlert.SUCCESS, 'Успех!'));
         done();
       })
       .catch((res) => {
         dispatch({
           type: UPDATE_QUESTS_FAILURE,
-          payload: res
+          payload: res.error
         });
+        dispatch(setVisibilityAlert(StyleAlert.FAILURE, res.error));
         done();
       });
   }
